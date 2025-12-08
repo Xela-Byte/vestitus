@@ -26,7 +26,7 @@ const config: Config = {
         "sf-black": ["SF-Pro-Display-Black"],
       },
       colors: {
-        background: "#1A1A1A",
+        primary: "#1A1A1A",
       },
     },
   },

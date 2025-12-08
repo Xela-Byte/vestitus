@@ -49,7 +49,7 @@ export default function SplashScreenComponent() {
     outputRange: ["0deg", "360deg"],
   });
   return (
-    <SafeAreaView className="w-screen h-screen bg-background">
+    <SafeAreaView className="w-screen h-screen bg-primary">
       <View className="size-full flex items-center justify-center relative">
         <Animated.View
           style={{
