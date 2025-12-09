@@ -1,5 +1,10 @@
 import React from "react";
-import { TouchableOpacity, TouchableOpacityProps, View } from "react-native";
+import {
+  ActivityIndicator,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View,
+} from "react-native";
 import AppText from "./AppText";
 
 export interface AppButtonProps extends TouchableOpacityProps {
@@ -124,19 +129,31 @@ const AppButton = React.forwardRef<any, AppButtonProps>(
       <TouchableOpacity
         className={`${`bg-primary p-5 rounded-xl ${
           fullWidth ? "w-full" : ""
-        } ${isDisabled ? "bg-disabled" : ""}`} ${className || ""}`}
+        } ${isDisabled ? "bg-inactive" : "bg-primary"}`} ${className || ""}`}
         disabled={isDisabled}
         {...props}
         activeOpacity={0.7}
       >
         <View className="flex-row items-center justify-center gap-2">
-          {loading && loadingIndicator}
-          {!loading && icon && iconPosition === "left" && icon}
+          {loading ? (
+            // Show custom loader OR fallback loader
+            loadingIndicator ? (
+              loadingIndicator
+            ) : (
+              <ActivityIndicator color="white" />
+            )
+          ) : (
+            // When NOT loading, show left icon (if any)
+            icon && iconPosition === "left" && icon
+          )}
+
           {(label || children) && (
             <AppText className="font-semibold text-white text-center">
               {label || children}
             </AppText>
           )}
+
+          {/* Right icon (only when not loading) */}
           {!loading && icon && iconPosition === "right" && icon}
         </View>
       </TouchableOpacity>

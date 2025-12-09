@@ -121,18 +121,18 @@ export default function RegisterScreen() {
           <View className="mt-8">
             <AppButton
               disabled
-              label="Login"
+              label="Register"
               onPress={handleSubmit(onSubmit)}
             />
           </View>
         </View>
       </ScrollView>
       <View className="absolute bottom-0 w-full h-24 p-5">
-        <Link href={"/register"} asChild>
+        <Link href={"/login"} asChild>
           <AppText className="text-primary text-sm text-center">
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <AppText className="text-primary font-outfit-medium underline text-sm">
-              Join us!
+              Get in jor!
             </AppText>
           </AppText>
         </Link>

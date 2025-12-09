@@ -2,6 +2,7 @@ import AppButton from "@/components/ui/AppButton";
 import AppInput from "@/components/ui/AppInput";
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
+import { useAuthStore } from "@/store";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "@/utils/regex";
 import { Link } from "expo-router";
 import { useState } from "react";
@@ -15,19 +16,26 @@ interface LoginFormData {
 }
 
 export default function LoginScreen() {
-  const { control, handleSubmit, watch } = useForm<LoginFormData>({
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<LoginFormData>({
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
+  const login = useAuthStore((state) => state.login);
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data: LoginFormData) => {
-    console.log("====================================");
-    console.log(data);
-    console.log("====================================");
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      login({ ...data, fullName: "Xela Oladipupo" });
+    }, 2000);
   };
 
   return (
@@ -91,8 +99,9 @@ export default function LoginScreen() {
           {/* Login Button */}
           <View className="mt-8">
             <AppButton
-              disabled
-              label="Login"
+              label={loading ? "Logging you in..." : "Login"}
+              disabled={!isValid}
+              loading={loading}
               onPress={handleSubmit(onSubmit)}
             />
           </View>

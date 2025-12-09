@@ -1,4 +1,5 @@
 import SplashScreenComponent from "@/components/splash/SplashScreenComponent";
+import { useAuthStore } from "@/store";
 import "@/styles/global.css";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
@@ -40,12 +41,12 @@ export default function RootLayout() {
 }
 
 function RootNavigator() {
-  const session = false;
+  const session = useAuthStore((state) => state.user);
 
   return (
     <Stack>
       <Stack.Protected guard={!!session}>
-        <Stack.Screen name="(app)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack.Protected>
 
       <Stack.Protected guard={!session}>

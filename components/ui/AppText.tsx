@@ -78,39 +78,39 @@ const AppText = React.forwardRef<Text, AppTextProps>(
     const variantStyles: Record<string, TextStyle> = {
       h1: {
         fontSize: 64,
-        fontWeight: "700",
+        fontWeight: "800",
         lineHeight: 64,
-        fontFamily: "Outfit",
+        fontFamily: "Outfit-Bold",
       },
       h2: {
         fontSize: 32,
         fontWeight: "700",
         lineHeight: 32,
-        fontFamily: "Outfit",
+        fontFamily: "Outfit-Bold",
       },
       h3: {
         fontSize: 20,
         fontWeight: "600",
         lineHeight: 28,
-        fontFamily: "Outfit",
+        fontFamily: "Outfit-SemiBold",
       },
       body: {
         fontSize: 16,
         fontWeight: "400",
         lineHeight: 24,
-        fontFamily: "Outfit",
+        fontFamily: "Outfit-Regular",
       },
       caption: {
         fontSize: 12,
         fontWeight: "400",
         lineHeight: 18,
-        fontFamily: "Outfit",
+        fontFamily: "Outfit-Regular",
       },
       button: {
         fontSize: 16,
         fontWeight: "600",
         lineHeight: 24,
-        fontFamily: "Outfit",
+        fontFamily: "Outfit-SemiBold",
       },
     };
 

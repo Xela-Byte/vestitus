@@ -30,7 +30,7 @@ const config: Config = {
         secondary: "#808080",
         stroke: "#E0E0E0",
         green: "#0C9409",
-        disabled: "#CCCCCC",
+        inactive: "#CCCCCC",
       },
     },
   },

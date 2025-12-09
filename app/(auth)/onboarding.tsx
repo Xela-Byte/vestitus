@@ -2,6 +2,7 @@ import SomeGuy from "@/assets/images/man.png";
 import WhiteLines from "@/assets/images/white_lines.png";
 import AppButton from "@/components/ui/AppButton";
 import AppText from "@/components/ui/AppText";
+import { sizeBlock } from "@/styles/universalStyle";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
 import { View } from "react-native";
@@ -20,7 +21,7 @@ export default function OnboardingScreen() {
           source={SomeGuy}
           style={{
             width: "110%",
-            height: 700,
+            height: sizeBlock.getHeightSize(500),
             marginTop: "-30%",
             marginLeft: "5%",
           }}
@@ -36,7 +37,7 @@ export default function OnboardingScreen() {
           }}
         />
         <View className="absolute bottom-20 w-full p-10">
-          <Link href={"/login"} asChild>
+          <Link href={"/register"} asChild>
             <AppButton label="Get Started" className="shadow-sm shadow-white" />
           </Link>
         </View>
