@@ -27,6 +27,8 @@ const config: Config = {
       },
       colors: {
         primary: "#1A1A1A",
+        secondary: "#808080",
+        stroke: "#E0E0E0",
       },
     },
   },
