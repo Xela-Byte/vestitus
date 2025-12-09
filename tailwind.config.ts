@@ -31,6 +31,8 @@ const config: Config = {
         stroke: "#E0E0E0",
         green: "#0C9409",
         inactive: "#CCCCCC",
+        grey: "#B3B3B3",
+        input: "#E6E6E6",
       },
     },
   },

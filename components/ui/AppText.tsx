@@ -124,7 +124,7 @@ const AppText = React.forwardRef<Text, AppTextProps>(
     return (
       <Text
         ref={ref}
-        className={className}
+        className={`text-primary ${className}`}
         style={computedStyle}
         numberOfLines={numberOfLines}
         {...restProps}

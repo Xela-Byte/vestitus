@@ -3,6 +3,7 @@ import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
+import { StyleSheet } from "react-native";
 
 export default function TabLayout() {
   return (
@@ -12,7 +13,16 @@ export default function TabLayout() {
         tabBarInactiveTintColor: "#808080",
         tabBarActiveTintColor: "#1A1A1A",
         tabBarBackground: () => (
-          <BlurView tint="systemChromeMaterial" intensity={35} />
+          <BlurView
+            intensity={15}
+            style={{
+              ...StyleSheet.absoluteFillObject,
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+              overflow: "hidden",
+              backgroundColor: "transparent",
+            }}
+          />
         ),
         tabBarStyle: {
           height: sizeBlock.getHeightSize(85),
@@ -24,6 +34,8 @@ export default function TabLayout() {
           bottom: 0,
           left: 0,
           right: 0,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
         },
       }}
     >
