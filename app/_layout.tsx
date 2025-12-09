@@ -5,6 +5,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
+import { StatusBar } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
@@ -35,6 +36,7 @@ export default function RootLayout() {
   if (!ready) return <SplashScreenComponent />;
   return (
     <>
+      <StatusBar barStyle="dark-content" />
       <RootNavigator />
     </>
   );
