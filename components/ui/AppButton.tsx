@@ -124,7 +124,7 @@ const AppButton = React.forwardRef<any, AppButtonProps>(
       <TouchableOpacity
         className={`${`bg-primary p-5 rounded-xl ${
           fullWidth ? "w-full" : ""
-        } ${isDisabled ? "opacity-50" : ""}`} ${className || ""}`}
+        } ${isDisabled ? "bg-disabled" : ""}`} ${className || ""}`}
         disabled={isDisabled}
         {...props}
         activeOpacity={0.7}

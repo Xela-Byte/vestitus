@@ -9,13 +9,14 @@ import { useForm } from "react-hook-form";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-interface LoginFormData {
+interface RegisterFormData {
+  fullName: string;
   email: string;
   password: string;
 }
 
-export default function LoginScreen() {
-  const { control, handleSubmit, watch } = useForm<LoginFormData>({
+export default function RegisterScreen() {
+  const { control, handleSubmit, watch } = useForm<RegisterFormData>({
     defaultValues: {
       email: "",
       password: "",
@@ -24,7 +25,7 @@ export default function LoginScreen() {
 
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (data: LoginFormData) => {
+  const onSubmit = async (data: RegisterFormData) => {
     console.log("====================================");
     console.log(data);
     console.log("====================================");
@@ -37,17 +38,31 @@ export default function LoginScreen() {
         <View className="p-5">
           <HeaderComponent />
           <AppText className="font-outfit-semibold text-3xl">
-            Login to your account
+            Create an account
           </AppText>
           <AppText variant="body" className="text-secondary mt-1">
-            It's great to see you again!
+            It's great to have you here!
           </AppText>
         </View>
 
         {/* Form */}
         <View className="gap-5 px-5 py-6">
           {/* Email Input */}
-          <AppInput<LoginFormData>
+          <AppInput<RegisterFormData>
+            control={control}
+            name="fullName"
+            label="Full Name"
+            placeholder="Enter your full name"
+            rules={{
+              required: "Full name is required",
+              minLength: {
+                value: 2,
+                message: "Full name must be at least 2 characters long",
+              },
+            }}
+          />
+
+          <AppInput<RegisterFormData>
             control={control}
             name="email"
             label="Email Address"
@@ -63,7 +78,7 @@ export default function LoginScreen() {
           />
 
           {/* Password Input */}
-          <AppInput<LoginFormData>
+          <AppInput<RegisterFormData>
             control={control}
             name="password"
             label="Password"
@@ -79,14 +94,28 @@ export default function LoginScreen() {
             }}
           />
 
-          <Link href={"/forgot-password"} asChild>
-            <AppText className="text-primary text-sm">
-              Forgot your password?{" "}
-              <AppText className="text-primary underline text-sm">
-                Reset your password
+          <AppText className="text-primary text-sm">
+            By signing up you agree to our{" "}
+            <Link href={"https://xelabyte.vercel.app"} asChild>
+              <AppText className="text-primary font-outfit-medium underline text-sm">
+                Terms
               </AppText>
-            </AppText>
-          </Link>
+            </Link>
+            ,{" "}
+            <Link href={"https://github.com/Xela-Byte"} asChild>
+              <AppText className="text-primary font-outfit-medium underline text-sm">
+                {" "}
+                Privacy Policy
+              </AppText>
+            </Link>{" "}
+            and{" "}
+            <Link href={"https://x.com/xelaByte"} asChild>
+              <AppText className="text-primary font-outfit-medium underline text-sm">
+                Cookie Use
+              </AppText>
+            </Link>
+            .
+          </AppText>
 
           {/* Login Button */}
           <View className="mt-8">

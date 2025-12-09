@@ -29,6 +29,8 @@ const config: Config = {
         primary: "#1A1A1A",
         secondary: "#808080",
         stroke: "#E0E0E0",
+        green: "#0C9409",
+        disabled: "#CCCCCC",
       },
     },
   },
