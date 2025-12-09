@@ -3,7 +3,7 @@ import Feather from "@expo/vector-icons/Feather";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export default function TabLayout() {
   return (
@@ -12,31 +12,42 @@ export default function TabLayout() {
         headerShown: false,
         tabBarInactiveTintColor: "#808080",
         tabBarActiveTintColor: "#1A1A1A",
-        tabBarBackground: () => (
-          <BlurView
-            intensity={15}
-            style={{
-              ...StyleSheet.absoluteFillObject,
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
-              overflow: "hidden",
-              backgroundColor: "transparent",
-            }}
-          />
-        ),
-        tabBarStyle: {
-          height: sizeBlock.getHeightSize(85),
-          paddingTop: sizeBlock.getHeightSize(20),
-          backgroundColor: "rgba(255, 255, 255, 0.1)",
-          borderTopColor: "rgba(255, 255, 255, 0.2)",
-          borderTopWidth: 1,
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
+        tabBarBackground: () => {
+          if (Platform.OS !== "ios") {
+            return null;
+          }
+          return (
+            <>
+              <BlurView
+                intensity={15}
+                style={{
+                  ...StyleSheet.absoluteFillObject,
+                  borderTopLeftRadius: 20,
+                  borderTopRightRadius: 20,
+                  overflow: "hidden",
+                  backgroundColor: "transparent",
+                }}
+              />
+            </>
+          );
         },
+        tabBarStyle: Platform.select({
+          ios: {
+            backgroundColor: "transparent",
+            borderTopColor: "rgba(255, 255, 255, 0.2)",
+            borderTopWidth: 1,
+            height: sizeBlock.getHeightSize(85),
+            paddingTop: sizeBlock.getHeightSize(20),
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+          },
+          android: {
+            height: sizeBlock.getHeightSize(85),
+            paddingTop: sizeBlock.getHeightSize(20),
+          },
+        }),
       }}
     >
       <Tabs.Screen

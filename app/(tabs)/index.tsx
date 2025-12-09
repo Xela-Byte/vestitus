@@ -22,7 +22,9 @@ const HomeScreen = (props: Props) => {
       {/* Header */}
       <View className="p-5">
         <View className="flex flex-row items-center justify-between py-3">
-          <AppText variant="h2">Discover</AppText>
+          <AppText weight="semibold" variant="h2">
+            Discover
+          </AppText>
           <Feather name="bell" size={24} color="#1a1a1a" />
         </View>
       </View>

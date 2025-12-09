@@ -1,5 +1,6 @@
 import React from "react";
-import { FlatList, Pressable, Text, View } from "react-native";
+import { FlatList, Pressable, View } from "react-native";
+import AppText from "../ui/AppText";
 
 type Props = {
   onCategorySelect?: (category: string) => void;
@@ -30,11 +31,11 @@ const ProductCategoryTab = ({ onCategorySelect, selectedCategory }: Props) => {
           category === selectedCategory ? "bg-primary" : "bg-gray-200"
         }`}
       >
-        <Text
-          className={`text-sm ${category === selectedCategory ? "text-white" : "text-gray-800"}`}
+        <AppText
+          className={`text-sm font-outfit-regular ${category === selectedCategory ? "text-white" : "text-gray-800"}`}
         >
           {category}
-        </Text>
+        </AppText>
       </Pressable>
     );
   };
