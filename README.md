@@ -67,6 +67,7 @@ npm test -- --coverage  # Run tests with coverage report
 The project uses **Husky** to automatically run checks before pushing code. This ensures only code that passes all checks gets pushed to the repository.
 
 **Checks that run before push:**
+
 1. `npm run type-check` - TypeScript type checking
 2. `npm run test` - Jest test suite
 3. `npm run lint` - ESLint linting
