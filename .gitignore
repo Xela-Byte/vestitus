@@ -32,7 +32,7 @@ yarn-error.*
 *.pem
 
 # test
-coverage/**/*
+/coverage
 
 # local env files
 .env*.local
