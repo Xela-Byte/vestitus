@@ -1,4 +1,4 @@
-# Vestitus - AI Coding Guidelines
+# Vestitus
 
 ## Project Overview
 
