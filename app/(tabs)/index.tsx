@@ -1,9 +1,9 @@
 import FilterIcon from "@/assets/icons/filter.svg";
+import NotifeeBell from "@/components/notification/NotifeeBell";
 import ProductCategoryTab from "@/components/product/ProductCategoryTab";
 import ProductView from "@/components/product/ProductView";
 import AppText from "@/components/ui/AppText";
 import SearchInput from "@/components/ui/SearchInput";
-import Feather from "@expo/vector-icons/Feather";
 import { useState } from "react";
 import { Pressable, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -25,7 +25,7 @@ const HomeScreen = (props: Props) => {
           <AppText weight="semibold" variant="h2">
             Discover
           </AppText>
-          <Feather name="bell" size={24} color="#1a1a1a" />
+          <NotifeeBell />
         </View>
       </View>
 
