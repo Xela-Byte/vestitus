@@ -57,6 +57,9 @@ npm run android       # Build for Android emulator
 npm run ios          # Build for iOS simulator
 npm run web          # Run web version
 npm run lint         # ESLint with Expo config
+npm test             # Run test suite
+npm test -- --watch  # Run tests in watch mode
+npm test -- --coverage  # Run tests with coverage report
 ```
 
 ### Path Aliases
@@ -125,9 +128,71 @@ npm run lint         # ESLint with Expo config
 3. Use Outfit font families with weight variants
 4. Test on both iOS and Android (NativeWind abstracts platform differences)
 
+## Testing
+
+The project uses **Jest** with **React Native Testing Library** for comprehensive test coverage.
+
+### Running Tests
+
+```bash
+npm test                    # Run all tests once
+npm test -- --watch         # Watch mode (re-runs on file changes)
+npm test -- --coverage      # Generate coverage report
+npm test -- --verbose       # Detailed test output
+```
+
+### Test Structure
+
+Tests are located in `__tests__/` directory:
+
+- `__tests__/components/` - Component tests
+- `__tests__/store/` - Store logic tests
+- `__tests__/setup/` - Test utilities and mocks
+
+### Writing Tests
+
+Example component test:
+
+```tsx
+import { render, screen } from "../../setup/test-utils";
+import MyComponent from "../../../components/MyComponent";
+
+describe("MyComponent", () => {
+  it("renders correctly", () => {
+    render(<MyComponent />);
+    expect(screen.getByText("Expected Text")).toBeDefined();
+  });
+});
+```
+
+Example store test:
+
+```tsx
+import { renderHook, act } from '@testing-library/react-native';
+import { useAuthStore } from '@/store';
+
+describe('useAuthStore', () => {
+  it('logs in user', () => {
+    const { result } = renderHook(() => useAuthStore());
+    act(() => {
+      result.current.login({ email: 'test@example.com', ... });
+    });
+    expect(result.current.user).toBeDefined();
+  });
+});
+```
+
+Configuration files:
+
+- `jest.config.js` - Jest configuration with module mappings
+- `jest.setup.js` - Pre-test setup with Expo/RN mocks
+- `__tests__/setup/test-utils.tsx` - Custom render function
+- `__tests__/setup/mocks.ts` - Mock helper functions
+
 ## Debugging Tips
 
 - **Font loading issues**: Check `app/_layout.tsx` useFonts - ensure fonts imported
 - **Styling not applying**: Verify NativeWind is in Babel config and component accepts `className`
 - **Navigation not working**: Check `Stack.Protected` guard condition and auth store state
 - **Form validation silent**: Ensure `rules` prop on AppInput and form state is tied via `control`
+- **Tests failing**: Check relative import paths in test files and ensure jest.setup.js mocks are present
