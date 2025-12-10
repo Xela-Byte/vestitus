@@ -1,11 +1,11 @@
-import FilterIcon from "@/assets/icons/filter.svg";
 import NotifeeBell from "@/components/notification/NotifeeBell";
 import ProductCategoryTab from "@/components/product/ProductCategoryTab";
 import ProductView from "@/components/product/ProductView";
+import FilterSearch from "@/components/search/FilterSearch";
 import AppText from "@/components/ui/AppText";
 import SearchInput from "@/components/ui/SearchInput";
 import { useState } from "react";
-import { Pressable, View } from "react-native";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type Props = Record<string, never>;
@@ -41,9 +41,7 @@ const HomeScreen = (props: Props) => {
           />
         </View>
 
-        <Pressable className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
-          <FilterIcon />
-        </Pressable>
+        <FilterSearch />
       </View>
 
       <View className="px-5 py-4">

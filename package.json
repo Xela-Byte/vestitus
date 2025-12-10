@@ -11,7 +11,8 @@
     "lint": "expo lint",
     "type-check": "tsc --noEmit",
     "test": "npm run type-check && jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepush": "bash .husky/pre-push"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

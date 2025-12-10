@@ -21,7 +21,7 @@ interface FilterBottomSheetProps {
   initialFilters?: FilterOptions;
 }
 
-const snapPoints = ["70%", "90%"];
+const snapPoints = ["80%", "90%"];
 
 const FilterBottomSheet = ({
   visible,
@@ -35,7 +35,6 @@ const FilterBottomSheet = ({
   );
 
   const [priceMin, setPriceMin] = useState(initialFilters.priceMin);
-  const [priceMax, setPriceMax] = useState(initialFilters.priceMax);
   const [useCustomPrice, setUseCustomPrice] = useState(
     initialFilters.useCustomPrice
   );
@@ -77,7 +76,7 @@ const FilterBottomSheet = ({
     const filters: FilterOptions = {
       sortBy,
       priceMin: useCustomPrice ? parseInt(customPriceMin) || 0 : priceMin,
-      priceMax: useCustomPrice ? parseInt(customPriceMax) || 5000 : priceMax,
+      priceMax: useCustomPrice ? parseInt(customPriceMax) || 5000 : 5000,
       useCustomPrice,
       customPriceMin: customPriceMin ? parseInt(customPriceMin) : undefined,
       customPriceMax: customPriceMax ? parseInt(customPriceMax) : undefined,
@@ -161,6 +160,7 @@ const FilterBottomSheet = ({
           <FlatList
             data={SORT_BY_OPTIONS}
             renderItem={({ item, index }) => renderSortByItem(item, index)}
+            keyExtractor={(item, index) => `sort-${index}`}
             horizontal
             showsHorizontalScrollIndicator={false}
             scrollEnabled={false}
@@ -174,31 +174,20 @@ const FilterBottomSheet = ({
           </AppText>
 
           {!useCustomPrice ? (
-            <View>
+            <>
               {/* Range Slider */}
               <RangeSlider
                 min={0}
                 max={5000}
-                minValue={priceMin}
-                maxValue={priceMax}
                 step={50}
-                onMinChange={setPriceMin}
-                onMaxChange={setPriceMax}
-                showValues={true}
+                onChange={(value) => setPriceMin(value)}
+                value={priceMin}
                 prefix="$"
                 className="mb-6"
               />
 
-              {/* Custom Price Button */}
-              <Pressable
-                onPress={() => setUseCustomPrice(true)}
-                className="border border-primary rounded-lg py-3 px-4"
-              >
-                <AppText className="text-center font-outfit-semibold text-primary">
-                  Custom Price Range
-                </AppText>
-              </Pressable>
-            </View>
+              <AppButton variant="outline" label="Custom Price Range" />
+            </>
           ) : (
             <View>
               {/* Custom Price Inputs */}
@@ -265,7 +254,11 @@ const FilterBottomSheet = ({
           </View>
 
           <View className="flex-row flex-wrap">
-            {SIZE_OPTIONS.map((size) => renderSizeOption(size))}
+            {SIZE_OPTIONS.map((size) => (
+              <React.Fragment key={size}>
+                {renderSizeOption(size)}
+              </React.Fragment>
+            ))}
           </View>
         </View>
 
