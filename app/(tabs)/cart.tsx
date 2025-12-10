@@ -1,3 +1,4 @@
+import NoCartItems from "@/components/cart/NoCartItems";
 import HeaderComponent from "@/components/ui/HeaderComponent";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,6 +11,10 @@ const CartScreen = (props: Props) => {
       {/* Header */}
       <View className="px-5">
         <HeaderComponent title="My Cart" />
+      </View>
+
+      <View className="flex-1 items-center justify-center">
+        <NoCartItems />
       </View>
     </SafeAreaView>
   );
