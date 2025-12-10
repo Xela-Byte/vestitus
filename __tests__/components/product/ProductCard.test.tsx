@@ -1,7 +1,7 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react-native";
 import ProductCard from "@/components/product/ProductCard";
 import { Product } from "@/types/product";
+import { render, screen } from "@testing-library/react-native";
+import React from "react";
 
 describe("ProductCard", () => {
   const mockProduct: Product = {
@@ -9,8 +9,6 @@ describe("ProductCard", () => {
     name: "Test Shirt",
     price: 99.99,
     discountPercent: 20,
-    description: "A great test shirt",
-    image: "test-image.jpg",
   };
 
   it("renders product card with item details", () => {
@@ -59,11 +57,7 @@ describe("ProductCard", () => {
 
   it("shows filled heart icon when saved", () => {
     const { UNSAFE_root } = render(
-      <ProductCard
-        item={mockProduct}
-        isSaved={true}
-        onSaveToggle={jest.fn()}
-      />
+      <ProductCard item={mockProduct} isSaved={true} onSaveToggle={jest.fn()} />
     );
     expect(UNSAFE_root).toBeTruthy();
   });
@@ -75,7 +69,6 @@ describe("ProductCard", () => {
         item={mockProduct}
         isSaved={false}
         onSaveToggle={onSaveToggleMock}
-        testID="save-button"
       />
     );
     expect(onSaveToggleMock).toHaveBeenCalledTimes(0);
@@ -250,11 +243,7 @@ describe("ProductCard", () => {
     };
 
     rerender(
-      <ProductCard
-        item={newProduct}
-        isSaved={false}
-        onSaveToggle={jest.fn()}
-      />
+      <ProductCard item={newProduct} isSaved={false} onSaveToggle={jest.fn()} />
     );
 
     expect(screen.getByText("Updated Product")).toBeTruthy();
