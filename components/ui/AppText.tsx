@@ -16,7 +16,7 @@ interface AppTextProps extends TextProps {
   /**
    * Variant preset for common text styles
    */
-  variant?: "h1" | "h2" | "h3" | "body" | "caption" | "button";
+  variant?: "h1" | "h2" | "h3" | "h4" | "body" | "caption" | "button";
   weight?:
     | "thin"
     | "extralight"
@@ -94,6 +94,12 @@ const AppText = React.forwardRef<Text, AppTextProps>(
         lineHeight: 28,
         fontFamily: "Outfit-SemiBold",
       },
+      h4: {
+        fontSize: 16,
+        fontWeight: "500",
+        lineHeight: 28,
+        fontFamily: "Outfit-Medium",
+      },
       body: {
         fontSize: 16,
         fontWeight: "400",
@@ -124,7 +130,7 @@ const AppText = React.forwardRef<Text, AppTextProps>(
     return (
       <Text
         ref={ref}
-        className={`text-primary ${className}`}
+        className={`text-primary font-outfit-regular ${className}`}
         style={computedStyle}
         numberOfLines={numberOfLines}
         {...restProps}
