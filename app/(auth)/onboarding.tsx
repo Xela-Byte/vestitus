@@ -5,7 +5,7 @@ import AppText from "@/components/ui/AppText";
 import { sizeBlock } from "@/styles/universalStyle";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function OnboardingScreen() {
@@ -19,11 +19,16 @@ export default function OnboardingScreen() {
         </View>
         <Image
           source={SomeGuy}
+          // @ts-ignore
           style={{
             width: "110%",
             height: sizeBlock.getHeightSize(500),
-            marginTop: "-30%",
-            marginLeft: "5%",
+            marginTop: -sizeBlock.getHeightSize(70),
+            marginLeft: sizeBlock.getWidthSize(0),
+            filter: Platform.select({
+              ios: "none",
+              android: "grayscale(1) brightness(0.7)",
+            }),
           }}
         />
         <Image

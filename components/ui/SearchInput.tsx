@@ -2,7 +2,7 @@ import { useAppStore } from "@/store/app-store";
 import { sizeBlock } from "@/styles/universalStyle";
 import Feather from "@expo/vector-icons/Feather";
 import React, { useEffect, useState } from "react";
-import { TextInput, TextInputProps, View } from "react-native";
+import { Platform, TextInput, TextInputProps, View } from "react-native";
 import SpeechToText from "../speech/SpeechToText";
 
 interface SearchInputProps extends TextInputProps {
@@ -89,7 +89,13 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
           autoCorrect={false}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`${className} font-outfit-regular flex-1 h-full mb-2 px-2  text-base text-primary`}
+          style={{
+            marginBottom: Platform.select({
+              ios: sizeBlock.getHeightSize(5),
+              android: 0,
+            }),
+          }}
+          className={`${className} font-outfit-regular flex-1 h-full px-2  text-base text-primary`}
         />
 
         <SpeechToText micIconColor={micIconColor} micIconSize={micIconSize} />

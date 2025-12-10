@@ -41,9 +41,6 @@ const SpeechToText = ({
   useSpeechRecognitionEvent("start", () => setRecognizing(true));
   useSpeechRecognitionEvent("end", () => setRecognizing(false));
   useSpeechRecognitionEvent("result", (event) => {
-    console.log("====================================");
-    console.log(event.results[0]?.transcript);
-    console.log("====================================");
     updateTranscript(event.results[0]?.transcript);
   });
   useSpeechRecognitionEvent("error", (event) => {
