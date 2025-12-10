@@ -1,6 +1,6 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react-native";
 import SearchInput from "@/components/ui/SearchInput";
+import { fireEvent, render, screen } from "@testing-library/react-native";
+import React from "react";
 
 describe("SearchInput", () => {
   it("renders with default placeholder", () => {
@@ -29,9 +29,7 @@ describe("SearchInput", () => {
 
   it("calls onMicPress when mic icon is pressed", () => {
     const onMicPressMock = jest.fn();
-    const { getByTestId } = render(
-      <SearchInput onMicPress={onMicPressMock} testID="mic-button" />
-    );
+    const { getByTestId } = render(<SearchInput testID="mic-button" />);
     // Find and press mic button
     expect(screen.UNSAFE_root).toBeTruthy();
   });
@@ -57,16 +55,12 @@ describe("SearchInput", () => {
   });
 
   it("customizes icon sizes", () => {
-    render(
-      <SearchInput searchIconSize={28} micIconSize={28} />
-    );
+    render(<SearchInput searchIconSize={28} micIconSize={28} />);
     expect(screen.UNSAFE_root).toBeTruthy();
   });
 
   it("customizes placeholder text color", () => {
-    render(
-      <SearchInput placeholderTextColor="#999999" />
-    );
+    render(<SearchInput placeholderTextColor="#999999" />);
     expect(screen.UNSAFE_root).toBeTruthy();
   });
 

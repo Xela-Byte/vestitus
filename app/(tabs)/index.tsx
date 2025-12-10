@@ -35,7 +35,6 @@ const HomeScreen = (props: Props) => {
           <SearchInput
             placeholder="Search products..."
             onSearchChange={(text) => {}}
-            onMicPress={() => {}}
           />
         </View>
 

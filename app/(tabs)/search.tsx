@@ -19,7 +19,6 @@ const SearchScreen = (props: Props) => {
           <SearchInput
             placeholder="Search products..."
             onSearchChange={(text) => {}}
-            onMicPress={() => {}}
           />
         </View>
 
