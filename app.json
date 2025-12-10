@@ -14,6 +14,10 @@
         "dark": "./assets/icons/ios-dark.png",
         "light": "./assets/icons/ios-light.png",
         "tinted": "./assets/icons/ios-tinted.png"
+      },
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to use the microphone to transcribe your speech to text for search feature and accessibility purposes.",
+        "NSSpeechRecognitionUsageDescription": "Allow $(PRODUCT_NAME) to use speech recognition for search feature and accessibility purposes."
       }
     },
     "android": {
@@ -25,9 +29,9 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.xelabyte.vestitus"
+      "package": "com.xelabyte.vestitus",
+      "permissions": ["RECORD_AUDIO", "INTERNET", "ACCESS_NETWORK_STATE"]
     },
-
     "plugins": [
       "expo-router",
       [
@@ -43,6 +47,16 @@
             "resizeMode": "contain",
             "backgroundColor": "#1A1A1A"
           }
+        }
+      ],
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to use the microphone to transcribe your speech to text for search feature and accessibility purposes.",
+          "speechRecognitionPermission": "Allow $(PRODUCT_NAME) to use speech recognition for search feature and accessibility purposes.",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox"
+          ]
         }
       ]
     ],

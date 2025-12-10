@@ -1,17 +1,12 @@
 import { sizeBlock } from "@/styles/universalStyle";
 import Feather from "@expo/vector-icons/Feather";
 import React, { useState } from "react";
-import {
-  TextInput,
-  TextInputProps,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { TextInput, TextInputProps, View } from "react-native";
+import SpeechToText from "../speech/SpeechToText";
 
 interface SearchInputProps extends TextInputProps {
   className?: string;
   onSearchChange?: (text: string) => void;
-  onMicPress?: () => void;
   searchIconColor?: string;
   micIconColor?: string;
   searchIconSize?: number;
@@ -28,7 +23,6 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
     {
       className = "",
       onSearchChange,
-      onMicPress,
       searchIconColor = "#B3B3B3",
       micIconColor = "#B3B3B3",
       searchIconSize = 20,
@@ -77,16 +71,7 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
           className={`${className} font-outfit-regular flex-1 h-full mb-2 px-2  text-base text-primary`}
         />
 
-        {/* Mic Icon */}
-        <TouchableOpacity
-          onPress={onMicPress}
-          style={{
-            marginLeft: sizeBlock.getWidthSize(3),
-            padding: sizeBlock.getWidthSize(2),
-          }}
-        >
-          <Feather name="mic" size={micIconSize} color={micIconColor} />
-        </TouchableOpacity>
+        <SpeechToText micIconColor={micIconColor} micIconSize={micIconSize} />
       </View>
     );
   }
