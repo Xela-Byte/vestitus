@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "type-check": "tsc --noEmit",
-    "test": "jest"
+    "test": "npm run type-check && jest"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
