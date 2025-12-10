@@ -62,6 +62,28 @@ npm test -- --watch  # Run tests in watch mode
 npm test -- --coverage  # Run tests with coverage report
 ```
 
+### ESLint & Expo Lint Rules
+
+The project uses **ESLint with Expo's recommended configuration** (`eslint-config-expo`) to enforce code quality standards for React Native development.
+
+**Key Expo Lint Rules:**
+
+- **React Best Practices**: Enforces proper Hook usage, component patterns, and React Native conventions
+- **No Unused Imports**: Ensures clean imports in all files
+- **Accessibility**: Requires proper accessibility labels and semantic HTML/React Native usage
+- **Performance**: Flags potential performance issues like missing dependency arrays in useEffect/useCallback
+- **Platform-Specific Code**: Warns about using web-only APIs in native components
+- **Async/Await Patterns**: Enforces proper error handling in async code
+
+**Running linting:**
+
+```bash
+npm run lint         # Check for linting issues
+npm run lint -- --fix  # Auto-fix fixable issues
+```
+
+The ESLint configuration is defined in `eslint.config.js` and uses the Expo flat config format. Rules are automatically enforced as part of the pre-push Husky hook to maintain code quality across the team.
+
 ### Git Pre-Push Hooks
 
 The project uses **Husky** to automatically run checks before pushing code. This ensures only code that passes all checks gets pushed to the repository.
