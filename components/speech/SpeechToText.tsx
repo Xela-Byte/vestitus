@@ -11,11 +11,13 @@ import { Animated, TouchableOpacity } from "react-native";
 type Props = {
   micIconColor?: string;
   micIconSize?: number;
+  onSpeechResult?: (transcript: string) => void;
 };
 
 const SpeechToText = ({
   micIconColor = "#B3B3B3",
   micIconSize = 20,
+  onSpeechResult,
 }: Props) => {
   const [recognizing, setRecognizing] = useState(false);
   const scaleAnim = useRef(new Animated.Value(1)).current;
@@ -41,7 +43,11 @@ const SpeechToText = ({
   useSpeechRecognitionEvent("start", () => setRecognizing(true));
   useSpeechRecognitionEvent("end", () => setRecognizing(false));
   useSpeechRecognitionEvent("result", (event) => {
-    updateTranscript(event.results[0]?.transcript);
+    const transcript = event.results[0]?.transcript;
+    updateTranscript(transcript);
+    if (onSpeechResult) {
+      onSpeechResult(transcript);
+    }
   });
   useSpeechRecognitionEvent("error", (event) => {
     console.log("error code:", event.error, "error message:", event.message);

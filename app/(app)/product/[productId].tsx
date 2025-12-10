@@ -34,6 +34,8 @@ const SpecificProduct = (props: Props) => {
                 name: "Sample Product",
                 price: 49.99,
                 discountPercent: 10,
+                description: "A sample product description",
+                imageUrl: "https://via.placeholder.com/300",
               }}
             />
           </View>

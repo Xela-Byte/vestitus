@@ -8,7 +8,7 @@ import React from "react";
 import { FlatList, Pressable, View } from "react-native";
 import AppText from "../ui/AppText";
 
-type Props = {};
+type Props = Record<string, never>;
 
 type ResultItemProps = {
   item: Product;

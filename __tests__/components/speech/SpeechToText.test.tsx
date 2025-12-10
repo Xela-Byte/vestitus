@@ -66,4 +66,27 @@ describe("SpeechToText", () => {
     render(<SpeechToText micIconSize={200} />);
     expect(screen.UNSAFE_root).toBeTruthy();
   });
+
+  it("accepts onSpeechResult callback prop", () => {
+    const mockCallback = jest.fn();
+    render(<SpeechToText onSpeechResult={mockCallback} />);
+    expect(screen.UNSAFE_root).toBeTruthy();
+  });
+
+  it("renders with all props including onSpeechResult", () => {
+    const mockCallback = jest.fn();
+    render(
+      <SpeechToText
+        micIconColor="#123456"
+        micIconSize={28}
+        onSpeechResult={mockCallback}
+      />
+    );
+    expect(screen.UNSAFE_root).toBeTruthy();
+  });
+
+  it("renders with optional onSpeechResult callback", () => {
+    render(<SpeechToText onSpeechResult={undefined} />);
+    expect(screen.UNSAFE_root).toBeTruthy();
+  });
 });

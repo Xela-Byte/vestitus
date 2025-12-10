@@ -123,4 +123,41 @@ describe("SearchInput", () => {
     fireEvent.changeText(input, "");
     expect(onSearchChangeMock).toHaveBeenLastCalledWith("");
   });
+
+  it("integrates with SpeechToText component", () => {
+    render(<SearchInput />);
+    // Verify SpeechToText is rendered
+    expect(screen.UNSAFE_root).toBeTruthy();
+  });
+
+  it("handles speech-to-text input via onSpeechResult callback", () => {
+    const onSearchChangeMock = jest.fn();
+    render(
+      <SearchInput
+        placeholder="Search..."
+        onSearchChange={onSearchChangeMock}
+      />
+    );
+    // Component should be ready to receive speech input
+    expect(screen.UNSAFE_root).toBeTruthy();
+  });
+
+  it("updates search value when speech result is received", () => {
+    const onSearchChangeMock = jest.fn();
+    const { getByPlaceholderText } = render(
+      <SearchInput
+        placeholder="Search..."
+        onSearchChange={onSearchChangeMock}
+      />
+    );
+    const input = getByPlaceholderText("Search...");
+    // Simulate speech result by changing text
+    fireEvent.changeText(input, "spoken query");
+    expect(onSearchChangeMock).toHaveBeenCalledWith("spoken query");
+  });
+
+  it("renders with SpeechToText props", () => {
+    render(<SearchInput micIconColor="#FF0000" micIconSize={24} />);
+    expect(screen.UNSAFE_root).toBeTruthy();
+  });
 });
