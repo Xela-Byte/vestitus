@@ -5,6 +5,7 @@ module.exports = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(svg|png|jpg|jpeg|gif)$": "<rootDir>/__tests__/setup/fileMock.js",
   },
   transform: {
     "^.+\\.(ts|tsx)$": [
@@ -16,6 +17,7 @@ module.exports = {
         ],
       },
     ],
+    "\\.svg$": "<rootDir>/__tests__/setup/svgTransform.js",
   },
   collectCoverageFrom: [
     "**/*.{ts,tsx}",

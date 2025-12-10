@@ -8,8 +8,18 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SplashScreenComponent() {
   const rotateAnim = useRef(new Animated.Value(0)).current;
+  const animationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    // Skip animation in test environment
+    if (process.env.NODE_ENV === "test") {
+      return () => {
+        if (animationTimeoutRef.current) {
+          clearTimeout(animationTimeoutRef.current);
+        }
+      };
+    }
+
     const runAnimation = () => {
       rotateAnim.setValue(0);
 
@@ -41,6 +51,9 @@ export default function SplashScreenComponent() {
 
     return () => {
       rotateAnim.setValue(0);
+      if (animationTimeoutRef.current) {
+        clearTimeout(animationTimeoutRef.current);
+      }
     };
   }, [rotateAnim]);
 
