@@ -1,6 +1,7 @@
+import { useAppStore } from "@/store/app-store";
 import { sizeBlock } from "@/styles/universalStyle";
 import Feather from "@expo/vector-icons/Feather";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextInput, TextInputProps, View } from "react-native";
 import SpeechToText from "../speech/SpeechToText";
 
@@ -37,6 +38,13 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
+    const transribedText = useAppStore((state) => state.transcribedText);
+
+    useEffect(() => {
+      if (transribedText && onSearchChange) {
+        onSearchChange(transribedText);
+      }
+    }, [transribedText]);
 
     return (
       <View
@@ -48,19 +56,32 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
         }}
       >
         {/* Search Icon */}
-        <Feather
-          name="search"
-          size={searchIconSize}
-          color={searchIconColor}
-          style={{
-            marginRight: sizeBlock.getWidthSize(3),
-          }}
-        />
+        {props.value?.length === 0 ? (
+          <Feather
+            name="search"
+            size={searchIconSize}
+            color={searchIconColor}
+            style={{
+              marginRight: sizeBlock.getWidthSize(3),
+            }}
+          />
+        ) : (
+          <Feather
+            name="x"
+            size={searchIconSize}
+            color={searchIconColor}
+            style={{
+              marginRight: sizeBlock.getWidthSize(3),
+            }}
+            onPress={() => onSearchChange?.("")}
+          />
+        )}
 
         {/* Text Input */}
         <TextInput
           ref={ref}
           {...props}
+          value={props.value}
           placeholder={placeholder}
           placeholderTextColor={placeholderTextColor}
           onChangeText={onSearchChange}

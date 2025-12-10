@@ -8,14 +8,14 @@ interface User {
   password: string;
 }
 
-interface AppState {
+interface AuthState {
   user: User | null;
   setUser: (userData: User) => void;
   login: (data: User) => void;
   logout: () => void;
 }
 
-export const useAuthStore = create<AppState>()(
+export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
       user: null,

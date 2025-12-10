@@ -9,10 +9,10 @@ import { Pressable, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type Props = Record<string, never>;
-// https://github.com/jamsch/expo-speech-recognition
+
 const HomeScreen = (props: Props) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-
+  const [searchText, setSearchText] = useState("");
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
   };
@@ -34,7 +34,10 @@ const HomeScreen = (props: Props) => {
         <View className="flex-1">
           <SearchInput
             placeholder="Search products..."
-            onSearchChange={(text) => {}}
+            value={searchText}
+            onSearchChange={(text) => {
+              setSearchText(text);
+            }}
           />
         </View>
 
