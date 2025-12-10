@@ -48,7 +48,7 @@ export default function LoginScreen() {
             Login to your account
           </AppText>
           <AppText variant="body" className="text-secondary mt-1">
-            It's great to see you again!
+            It&apos;s great to see you again!
           </AppText>
         </View>
 
@@ -110,7 +110,7 @@ export default function LoginScreen() {
       <View className="absolute bottom-0 w-full h-24 p-5">
         <Link href={"/register"} asChild>
           <AppText className="text-primary text-sm text-center">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <AppText className="text-primary font-outfit-medium underline text-sm">
               Join us!
             </AppText>

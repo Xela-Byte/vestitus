@@ -4,7 +4,6 @@ import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "@/utils/regex";
 import { Link } from "expo-router";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,14 +15,12 @@ interface RegisterFormData {
 }
 
 export default function RegisterScreen() {
-  const { control, handleSubmit, watch } = useForm<RegisterFormData>({
+  const { control, handleSubmit } = useForm<RegisterFormData>({
     defaultValues: {
       email: "",
       password: "",
     },
   });
-
-  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data: RegisterFormData) => {
     console.log("====================================");
@@ -41,7 +38,7 @@ export default function RegisterScreen() {
             Create an account
           </AppText>
           <AppText variant="body" className="text-secondary mt-1">
-            It's great to have you here!
+            It&apos;s great to have you here!
           </AppText>
         </View>
 

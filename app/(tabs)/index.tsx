@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Pressable, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = {};
+type Props = Record<string, never>;
 // https://github.com/jamsch/expo-speech-recognition
 const HomeScreen = (props: Props) => {
   const [selectedCategory, setSelectedCategory] = useState("All");

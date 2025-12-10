@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-type Props = {};
+type Props = Record<string, never>;
 
 const ProductScreen = (props: Props) => {
   return (

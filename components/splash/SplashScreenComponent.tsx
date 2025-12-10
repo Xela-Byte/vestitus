@@ -50,12 +50,14 @@ export default function SplashScreenComponent() {
     runAnimation();
 
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      const timeoutRef = animationTimeoutRef.current;
       rotateAnim.setValue(0);
-      if (animationTimeoutRef.current) {
-        clearTimeout(animationTimeoutRef.current);
+      if (timeoutRef) {
+        clearTimeout(timeoutRef);
       }
     };
-  }, [rotateAnim]);
+  }, [rotateAnim, animationTimeoutRef]);
 
   const rotation = rotateAnim.interpolate({
     inputRange: [0, 360],

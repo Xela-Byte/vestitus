@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = {};
+type Props = Record<string, never>;
 
 interface ForgotPasswordFormData {
   email: string;

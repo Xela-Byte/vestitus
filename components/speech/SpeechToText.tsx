@@ -16,11 +16,8 @@ const SpeechToText = ({
   micIconColor = "#B3B3B3",
   micIconSize = 20,
 }: Props) => {
-  const [recognizing, setRecognizing] = useState(false);
   const [transcript, setTranscript] = useState("");
 
-  useSpeechRecognitionEvent("start", () => setRecognizing(true));
-  useSpeechRecognitionEvent("end", () => setRecognizing(false));
   useSpeechRecognitionEvent("result", (event) => {
     setTranscript(event.results[0]?.transcript);
   });

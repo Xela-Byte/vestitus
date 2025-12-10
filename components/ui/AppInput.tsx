@@ -103,9 +103,11 @@ const AppInput = <TFieldValues extends FieldValues>({
                   multiline={mutliline}
                   numberOfLines={5}
                   onEndEditing={() => {
-                    name === "email"
-                      ? onChange(value?.toLowerCase().trim())
-                      : onChange(value?.trim());
+                    if (name === "email") {
+                      onChange(value?.toLowerCase().trim());
+                    } else {
+                      onChange(value?.trim());
+                    }
                   }}
                   {...inputProps}
                 />

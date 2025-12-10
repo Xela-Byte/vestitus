@@ -8,7 +8,7 @@ import React from "react";
 import { FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = {};
+type Props = Record<string, never>;
 
 const ProductReview = (props: Props) => {
   return (

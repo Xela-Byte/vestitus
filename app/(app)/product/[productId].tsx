@@ -8,7 +8,7 @@ import React from "react";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = {};
+type Props = Record<string, never>;
 
 const SpecificProduct = (props: Props) => {
   const { productId } = useLocalSearchParams();
