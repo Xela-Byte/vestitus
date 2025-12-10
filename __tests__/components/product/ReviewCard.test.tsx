@@ -11,46 +11,49 @@ describe("ReviewCard", () => {
   };
 
   it("renders review card component", () => {
-    const { UNSAFE_root } = render(<ReviewCard {...mockReview} />);
-    expect(UNSAFE_root).toBeTruthy();
-  });
-
-  it("displays review content", () => {
     render(<ReviewCard {...mockReview} />);
-    expect(screen.UNSAFE_root).toBeTruthy();
+    expect(screen.getByText(/John Doe/)).toBeDefined();
   });
 
-  it("renders without crashing", () => {
-    const { UNSAFE_root } = render(<ReviewCard {...mockReview} />);
-    expect(UNSAFE_root).toBeTruthy();
+  it("displays reviewer name", () => {
+    render(<ReviewCard {...mockReview} />);
+    expect(screen.getByText(/John Doe/)).toBeDefined();
   });
 
-  it("shows review information", () => {
+  it("displays review text", () => {
+    render(<ReviewCard {...mockReview} />);
+    expect(
+      screen.getByText("Great product! Highly recommended.")
+    ).toBeDefined();
+  });
+
+  it("shows review rating", () => {
     render(<ReviewCard {...mockReview} />);
     expect(screen.UNSAFE_root).toBeTruthy();
   });
 
   it("renders consistently", () => {
     const { rerender } = render(<ReviewCard {...mockReview} />);
-    expect(screen.UNSAFE_root).toBeTruthy();
+    expect(screen.getByText(/John Doe/)).toBeDefined();
 
     rerender(<ReviewCard {...mockReview} />);
-    expect(screen.UNSAFE_root).toBeTruthy();
+    expect(screen.getByText(/John Doe/)).toBeDefined();
   });
 
-  it("has proper card layout", () => {
+  it("displays review date", () => {
+    render(<ReviewCard {...mockReview} />);
+    expect(screen.getByText("2024-01-01")).toBeDefined();
+  });
+
+  it("maintains proper structure", () => {
     const { UNSAFE_root } = render(<ReviewCard {...mockReview} />);
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("maintains visual structure", () => {
-    const { UNSAFE_root } = render(<ReviewCard {...mockReview} />);
-    expect(UNSAFE_root.children.length).toBeGreaterThan(-1);
-  });
-
-  it("is a valid component", () => {
-    render(<ReviewCard {...mockReview} />);
-    expect(screen.UNSAFE_root).toBeTruthy();
+  it("handles different ratings", () => {
+    const lowRatingReview = { ...mockReview, rating: 2 };
+    render(<ReviewCard {...lowRatingReview} />);
+    expect(screen.getByText(/John Doe/)).toBeDefined();
   });
 
   it("renders with proper styling", () => {
@@ -58,14 +61,18 @@ describe("ReviewCard", () => {
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("handles multiple instances", () => {
-    render(
+  it("handles multiple review instances", () => {
+    const { getAllByText } = render(
       <>
         <ReviewCard {...mockReview} />
-        <ReviewCard {...mockReview} />
-        <ReviewCard {...mockReview} />
+        <ReviewCard
+          rating={4}
+          reviewText="Good product"
+          reviewerName="Jane Smith"
+          reviewDate="2024-01-02"
+        />
       </>
     );
-    expect(screen.UNSAFE_root).toBeTruthy();
+    expect(getAllByText(/Jane/).length).toBeGreaterThan(0);
   });
 });

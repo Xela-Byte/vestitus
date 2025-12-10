@@ -5,7 +5,7 @@ import {
   ExpoSpeechRecognitionModule,
   useSpeechRecognitionEvent,
 } from "expo-speech-recognition";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Animated, TouchableOpacity } from "react-native";
 
 type Props = {
@@ -21,7 +21,7 @@ const SpeechToText = ({
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const updateTranscript = useAppStore((state) => state.setTranscribedText);
 
-  const runAnimation = () => {
+  const runAnimation = useCallback(() => {
     Animated.loop(
       Animated.sequence([
         Animated.timing(scaleAnim, {
@@ -36,7 +36,7 @@ const SpeechToText = ({
         }),
       ])
     ).start();
-  };
+  }, [scaleAnim]);
 
   useSpeechRecognitionEvent("start", () => setRecognizing(true));
   useSpeechRecognitionEvent("end", () => setRecognizing(false));
@@ -75,7 +75,7 @@ const SpeechToText = ({
     } else {
       scaleAnim.setValue(1);
     }
-  }, [recognizing, scaleAnim]);
+  }, [recognizing, scaleAnim, runAnimation]);
 
   return (
     <>

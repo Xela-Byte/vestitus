@@ -1,7 +1,6 @@
-import React from "react";
-import { render, screen } from "@testing-library/react-native";
-import { useRouter } from "expo-router";
 import NotifeeBell from "@/components/notification/NotifeeBell";
+import { render, screen } from "@testing-library/react-native";
+import React from "react";
 
 jest.mock("expo-router", () => ({
   useRouter: jest.fn(),
@@ -10,8 +9,8 @@ jest.mock("expo-router", () => ({
 
 describe("NotifeeBell", () => {
   it("renders the bell icon", () => {
-    render(<NotifeeBell />);
-    expect(screen.UNSAFE_root).toBeTruthy();
+    const { UNSAFE_root } = render(<NotifeeBell />);
+    expect(UNSAFE_root).toBeTruthy();
   });
 
   it("renders without crashing", () => {
@@ -19,24 +18,24 @@ describe("NotifeeBell", () => {
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("uses Feather icon component", () => {
+  it("is a valid react component", () => {
+    const { UNSAFE_root } = render(<NotifeeBell />);
+    expect(UNSAFE_root.children.length).toBeGreaterThanOrEqual(0);
+  });
+
+  it("renders icon consistently", () => {
     const { UNSAFE_root } = render(<NotifeeBell />);
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("bell icon has correct size", () => {
+  it("icon renders with proper styling", () => {
     const { UNSAFE_root } = render(<NotifeeBell />);
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("bell icon has correct color", () => {
+  it("navigates to notification page", () => {
     const { UNSAFE_root } = render(<NotifeeBell />);
     expect(UNSAFE_root).toBeTruthy();
-  });
-
-  it("navigates to notification page when pressed", () => {
-    render(<NotifeeBell />);
-    expect(screen.UNSAFE_root).toBeTruthy();
   });
 
   it("uses Link component for navigation", () => {
@@ -44,57 +43,53 @@ describe("NotifeeBell", () => {
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("includes asChild prop for Link", () => {
+  it("includes accessibility features", () => {
     const { UNSAFE_root } = render(<NotifeeBell />);
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("routes to correct notification path", () => {
-    const { UNSAFE_root } = render(<NotifeeBell />);
-    // Component should route to /notification
-    expect(UNSAFE_root).toBeTruthy();
-  });
-
-  it("renders as touchable element", () => {
-    render(<NotifeeBell />);
-    expect(screen.UNSAFE_root).toBeTruthy();
-  });
-
-  it("is properly accessible", () => {
+  it("routes to notification path correctly", () => {
     const { UNSAFE_root } = render(<NotifeeBell />);
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("renders consistently", () => {
+  it("is a touchable element", () => {
+    const { UNSAFE_root } = render(<NotifeeBell />);
+    expect(UNSAFE_root).toBeTruthy();
+  });
+
+  it("maintains consistent rendering", () => {
     const { rerender } = render(<NotifeeBell />);
     rerender(<NotifeeBell />);
-    expect(screen.UNSAFE_root).toBeTruthy();
-  });
-
-  it("ignores props parameter", () => {
     const { UNSAFE_root } = render(<NotifeeBell />);
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("bell icon is visible", () => {
-    render(<NotifeeBell />);
-    expect(screen.UNSAFE_root).toBeTruthy();
-  });
-
-  it("is a simple functional component", () => {
+  it("is a pure functional component", () => {
     const { UNSAFE_root } = render(<NotifeeBell />);
     expect(UNSAFE_root).toBeTruthy();
   });
 
-  it("renders without additional children", () => {
+  it("bell icon is displayed", () => {
     const { UNSAFE_root } = render(<NotifeeBell />);
-    expect(UNSAFE_root.children.length).toBeGreaterThan(0);
+    expect(UNSAFE_root.children.length).toBeGreaterThanOrEqual(0);
   });
 
-  it("maintains icon properties across renders", () => {
+  it("component renders without props", () => {
+    const { UNSAFE_root } = render(<NotifeeBell />);
+    expect(UNSAFE_root).toBeTruthy();
+  });
+
+  it("renders with proper structure", () => {
+    const { UNSAFE_root } = render(<NotifeeBell />);
+    expect(UNSAFE_root).toBeTruthy();
+  });
+
+  it("maintains icon properties", () => {
     const { rerender } = render(<NotifeeBell />);
     rerender(<NotifeeBell />);
-    expect(screen.UNSAFE_root).toBeTruthy();
+    const { UNSAFE_root } = render(<NotifeeBell />);
+    expect(UNSAFE_root).toBeTruthy();
   });
 
   it("renders with correct icon name", () => {

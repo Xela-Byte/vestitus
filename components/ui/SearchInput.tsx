@@ -44,7 +44,7 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
       if (transribedText && onSearchChange) {
         onSearchChange(transribedText);
       }
-    }, [transribedText]);
+    }, [transribedText, onSearchChange]);
 
     return (
       <View
