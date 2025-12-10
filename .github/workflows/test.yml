@@ -24,7 +24,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm run expo-install
 
       - name: Run type check and tests
         run: npm test
