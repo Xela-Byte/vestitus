@@ -62,6 +62,19 @@ npm test -- --watch  # Run tests in watch mode
 npm test -- --coverage  # Run tests with coverage report
 ```
 
+### Git Pre-Push Hooks
+
+The project uses **Husky** to automatically run checks before pushing code. This ensures only code that passes all checks gets pushed to the repository.
+
+**Checks that run before push:**
+1. `npm run type-check` - TypeScript type checking
+2. `npm run test` - Jest test suite
+3. `npm run lint` - ESLint linting
+
+If any check fails, the push is blocked until issues are fixed. To bypass hooks (not recommended), use `git push --no-verify`.
+
+**For team members:** Husky hooks are automatically installed when you run `npm install` thanks to the `prepare` script in `package.json`.
+
 ### Path Aliases
 
 - Use `@/` for root imports: `@/components/...`, `@/utils/...`, `@/store`, `@/types/...`
