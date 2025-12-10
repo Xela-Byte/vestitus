@@ -1,7 +1,7 @@
-import FilterIcon from "@/assets/icons/filter.svg";
+import FilterSearch from "@/components/search/FilterSearch";
 import HeaderComponent from "@/components/ui/HeaderComponent";
 import SearchInput from "@/components/ui/SearchInput";
-import { Pressable, View } from "react-native";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 type Props = Record<string, never>;
@@ -22,9 +22,7 @@ const SearchScreen = (props: Props) => {
           />
         </View>
 
-        <Pressable className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
-          <FilterIcon />
-        </Pressable>
+        <FilterSearch />
       </View>
     </SafeAreaView>
   );

@@ -9,6 +9,8 @@ describe("ProductCard", () => {
     name: "Test Shirt",
     price: 99.99,
     discountPercent: 20,
+    description: "A comfortable test shirt",
+    imageUrl: "https://via.placeholder.com/300",
   };
 
   it("renders product card with item details", () => {

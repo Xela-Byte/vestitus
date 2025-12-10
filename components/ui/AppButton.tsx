@@ -125,11 +125,50 @@ const AppButton = React.forwardRef<any, AppButtonProps>(
   ) => {
     const isDisabled = disabled || loading;
 
+    const getVariantStyles = () => {
+      if (isDisabled) {
+        return "bg-inactive";
+      }
+
+      switch (variant) {
+        case "primary":
+          return "bg-primary";
+        case "secondary":
+          return "bg-secondary";
+        case "outline":
+          return "border-2 border-primary";
+        case "ghost":
+          return "bg-transparent";
+        default:
+          return "bg-primary";
+      }
+    };
+
+    const getSizeStyles = () => {
+      switch (size) {
+        case "sm":
+          return "px-3 py-3";
+        case "md":
+          return "px-4 py-4";
+        case "lg":
+          return "px-5 py-5";
+        default:
+          return "px-4 py-4";
+      }
+    };
+
+    const getTextColor = () => {
+      if (variant === "outline" || variant === "ghost") {
+        return "text-primary";
+      }
+      return "text-white";
+    };
+
     return (
       <TouchableOpacity
-        className={`${`bg-primary p-5 rounded-xl ${
+        className={`${getVariantStyles()} ${getSizeStyles()} rounded-xl ${
           fullWidth ? "w-full" : ""
-        } ${isDisabled ? "bg-inactive" : "bg-primary"}`} ${className || ""}`}
+        } ${className || ""}`}
         disabled={isDisabled}
         {...props}
         activeOpacity={0.7}
@@ -148,7 +187,7 @@ const AppButton = React.forwardRef<any, AppButtonProps>(
           )}
 
           {(label || children) && (
-            <AppText className="font-semibold text-white text-center">
+            <AppText className={`font-semibold text-center ${getTextColor()}`}>
               {label || children}
             </AppText>
           )}
