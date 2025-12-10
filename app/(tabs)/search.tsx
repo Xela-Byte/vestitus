@@ -1,4 +1,5 @@
 import FilterSearch from "@/components/search/FilterSearch";
+import RecentSearch from "@/components/search/RecentSearch";
 import HeaderComponent from "@/components/ui/HeaderComponent";
 import SearchInput from "@/components/ui/SearchInput";
 import { View } from "react-native";
@@ -23,6 +24,9 @@ const SearchScreen = (props: Props) => {
         </View>
 
         <FilterSearch />
+      </View>
+      <View className="px-7">
+        <RecentSearch />
       </View>
     </SafeAreaView>
   );
