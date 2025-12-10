@@ -104,6 +104,19 @@ jest.mock("@react-navigation/bottom-tabs", () => ({
   })),
 }));
 
+// Mock expo-speech-recognition
+jest.mock("expo-speech-recognition", () => ({
+  ExpoSpeechRecognitionModule: {
+    requestMicrophonePermissionsAsync: jest.fn(() =>
+      Promise.resolve({ granted: true })
+    ),
+    startSpeechRecognitionAsync: jest.fn(),
+    stopSpeechRecognitionAsync: jest.fn(),
+    abortSpeechRecognitionAsync: jest.fn(),
+  },
+  useSpeechRecognitionEvent: jest.fn((event, handler) => null),
+}));
+
 // Mock Animated API for SplashScreenComponent
 jest.mock("react-native/Libraries/Animated/AnimatedImplementation", () => {
   const createAnimatedComponent = (Component) => Component;
