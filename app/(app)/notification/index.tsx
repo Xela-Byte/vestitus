@@ -1,4 +1,5 @@
 import DateSeparator from "@/components/notification/DateSeparator";
+import NoNotification from "@/components/notification/NoNotification";
 import NotifeeCard from "@/components/notification/NotifeeCard";
 import HeaderComponent from "@/components/ui/HeaderComponent";
 import {
@@ -76,17 +77,21 @@ const NotificationScreen = (props: Props) => {
         <HeaderComponent title="Notifications" />
 
         <View className="border-t border-stroke py-5 h-[95%]">
-          <FlatList
-            data={flatData}
-            contentContainerClassName="pb-10"
-            keyExtractor={(item, index) => {
-              if ("id" in item) {
-                return item.id;
-              }
-              return `separator-${index}`;
-            }}
-            renderItem={renderItem}
-          />
+          {flatData.length ? (
+            <FlatList
+              data={flatData}
+              contentContainerClassName="pb-10"
+              keyExtractor={(item, index) => {
+                if ("id" in item) {
+                  return item.id;
+                }
+                return `separator-${index}`;
+              }}
+              renderItem={renderItem}
+            />
+          ) : (
+            <NoNotification />
+          )}
         </View>
       </View>
     </SafeAreaView>
