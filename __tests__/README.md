@@ -9,9 +9,10 @@ Welcome! This guide explains how testing works in the Vestitus project in simple
 3. [Project Structure](#project-structure)
 4. [How to Write Tests](#how-to-write-tests)
 5. [Common Testing Patterns](#common-testing-patterns)
-6. [Running Tests](#running-tests)
-7. [Debugging Tests](#debugging-tests)
-8. [Tips for Newbies](#tips-for-newbies)
+6. [Router Testing](#router-testing)
+7. [Running Tests](#running-tests)
+8. [Debugging Tests](#debugging-tests)
+9. [Tips for Newbies](#tips-for-newbies)
 
 ---
 
@@ -349,6 +350,140 @@ const mockRouter = createMockRouter();
 const mockNav = createMockNavigation();
 // Returns: { navigate: jest.fn(), setParams: jest.fn(), ... }
 ```
+
+---
+
+## Router Testing
+
+### What is Expo Router Testing?
+
+Expo Router testing uses the `expo-router/testing-library` utilities to test your app's navigation structure, route parameters, and deep linking functionality. Instead of running the full app, tests create mock route trees to verify navigation works correctly.
+
+### Route Testing Structure
+
+All router tests are in `__tests__/router/routing.test.tsx` and cover:
+
+- **Authentication Routes** - Onboarding, login, register, forgot password, verify code, reset password
+- **Tab Navigation** - Home, search, saved, cart, account tabs
+- **App Routes** - Product pages, notifications, dynamic product IDs
+- **Dynamic Parameters** - Capturing and preserving route parameters and query strings
+- **Authentication Flow** - Route rendering based on auth state
+
+### Basic Router Test Example
+
+```typescript
+import { renderRouter, screen } from "expo-router/testing-library";
+import { View } from "react-native";
+
+const MockScreen = () => <View />;
+
+describe("App Router", () => {
+  it("should navigate to login route", async () => {
+    renderRouter(
+      {
+        "(auth)/login": MockScreen,
+        "(auth)/onboarding": MockScreen,
+      },
+      { initialUrl: "/(auth)/login" }
+    );
+
+    expect(screen).toHavePathname("/login");
+  });
+
+  it("should handle dynamic product IDs", async () => {
+    renderRouter(
+      {
+        "(app)/product/[productId]": MockScreen,
+      },
+      { initialUrl: "/(app)/product/123" }
+    );
+
+    expect(screen).toHavePathname("/product/123");
+  });
+
+  it("should preserve query parameters", async () => {
+    renderRouter(
+      {
+        "(app)/product/[productId]": MockScreen,
+      },
+      { initialUrl: "/(app)/product/123?sort=price&filter=active" }
+    );
+
+    expect(screen).toHavePathnameWithParams(
+      "/product/123?sort=price&filter=active"
+    );
+  });
+});
+```
+
+### Available Router Matchers
+
+```typescript
+// Assert current pathname (route groups hidden from URL)
+expect(screen).toHavePathname("/product/123");
+
+// Assert pathname with query parameters
+expect(screen).toHavePathnameWithParams("/product/123?id=abc");
+
+// Assert route segments (includes route groups)
+expect(screen).toHaveSegments(["(app)", "product", "123"]);
+
+// Assert local search parameters
+expect(screen).useLocalSearchParams({ productId: "123" });
+
+// Assert global search parameters
+expect(screen).useGlobalSearchParams({ productId: "123" });
+
+// Assert complete router state
+expect(screen).toHaveRouterState({
+  routes: [{ name: "index", path: "/" }],
+});
+```
+
+### Creating Mock Routes
+
+You can mock routes in three ways:
+
+**1. Inline with components:**
+
+```typescript
+renderRouter({
+  index: MockScreen,
+  "(auth)/login": MockScreen,
+  "(tabs)/index": MockScreen,
+  "(app)/product/[productId]": MockScreen,
+});
+```
+
+**2. With null components (for simple structure testing):**
+
+```typescript
+renderRouter([
+  "index",
+  "(auth)/login",
+  "(tabs)/index",
+  "(app)/product/[productId]",
+]);
+```
+
+**3. From a fixture directory:**
+
+```typescript
+renderRouter("./my-test-fixture");
+```
+
+### Current Test Coverage
+
+The project has **30 router tests** covering:
+
+- ✅ 7 Authentication routes
+- ✅ 5 Tab navigation routes
+- ✅ 7 App content routes with dynamic parameters
+- ✅ 4 Dynamic parameter and query string tests
+- ✅ 2 Authentication flow tests
+- ✅ 5 Route structure and navigation tests
+
+All tests are passing and integrated into the main test suite.
 
 ---
 

@@ -1,3 +1,6 @@
+// Setup expo-router testing library matchers
+require("expo-router/build/testing-library/expect");
+
 // Suppress console warnings in tests
 global.console = {
   ...console,

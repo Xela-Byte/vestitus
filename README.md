@@ -130,7 +130,7 @@ npm test -- --coverage  # Run tests with coverage report
 
 ## Testing
 
-The project uses **Jest** with **React Native Testing Library** for comprehensive test coverage.
+The project uses **Jest** with **React Native Testing Library** for comprehensive test coverage, including **Expo Router testing** for navigation verification.
 
 ### Running Tests
 
@@ -139,6 +139,7 @@ npm test                    # Run all tests once
 npm test -- --watch         # Watch mode (re-runs on file changes)
 npm test -- --coverage      # Generate coverage report
 npm test -- --verbose       # Detailed test output
+npm test -- routing.test    # Run only router tests
 ```
 
 ### Test Structure
@@ -147,9 +148,10 @@ Tests are located in `__tests__/` directory:
 
 - `__tests__/components/` - Component tests
 - `__tests__/store/` - Store logic tests
+- `__tests__/router/` - Router and navigation tests (30 tests)
 - `__tests__/setup/` - Test utilities and mocks
 
-### Writing Tests
+### Writing Component Tests
 
 Example component test:
 
@@ -164,6 +166,8 @@ describe("MyComponent", () => {
   });
 });
 ```
+
+### Writing Store Tests
 
 Example store test:
 
@@ -182,12 +186,57 @@ describe('useAuthStore', () => {
 });
 ```
 
-Configuration files:
+### Testing Routes with Expo Router
+
+Test navigation and routing with `renderRouter`:
+
+```tsx
+import { renderRouter, screen } from "expo-router/testing-library";
+import { View } from "react-native";
+
+describe("App Router", () => {
+  it("should navigate to login", async () => {
+    renderRouter(
+      {
+        "(auth)/login": () => <View />,
+        "(auth)/onboarding": () => <View />,
+      },
+      { initialUrl: "/(auth)/login" }
+    );
+
+    expect(screen).toHavePathname("/login");
+  });
+
+  it("should handle product IDs", async () => {
+    renderRouter(
+      {
+        "(app)/product/[productId]": () => <View />,
+      },
+      { initialUrl: "/(app)/product/123" }
+    );
+
+    expect(screen).toHavePathname("/product/123");
+  });
+});
+```
+
+Router matchers available:
+
+- `toHavePathname(path)` - Assert current route
+- `toHavePathnameWithParams(path)` - Assert route with query params
+- `toHaveSegments(segments)` - Assert route segments
+- `useLocalSearchParams(params)` - Assert local parameters
+- `useGlobalSearchParams(params)` - Assert global parameters
+
+See `__tests__/README.md` for detailed router testing guide.
+
+### Test Configuration Files
 
 - `jest.config.js` - Jest configuration with module mappings
-- `jest.setup.js` - Pre-test setup with Expo/RN mocks
+- `jest.setup.js` - Pre-test setup with Expo/RN mocks and router matchers
 - `__tests__/setup/test-utils.tsx` - Custom render function
 - `__tests__/setup/mocks.ts` - Mock helper functions
+- `__tests__/setup/expo-router-matchers.d.ts` - TypeScript definitions for router matchers
 
 ## Debugging Tips
 
