@@ -5,7 +5,7 @@ import AppText from "../ui/AppText";
 
 type Props = Record<string, never>;
 
-const NoCartItems = (props: Props) => {
+const NoCartItem = (props: Props) => {
   return (
     <View className="flex-1 flex items-center justify-center gap-y-1">
       <FontAwesome
@@ -24,4 +24,4 @@ const NoCartItems = (props: Props) => {
   );
 };
 
-export default NoCartItems;
+export default NoCartItem;
