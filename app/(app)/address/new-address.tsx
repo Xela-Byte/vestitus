@@ -55,25 +55,25 @@ const NewAddress = () => {
           onClose={() => setBottomSheetVisible(false)}
           onConfirm={handleAddressConfirm}
         />
+      </SafeAreaView>
 
-        {/* Success Modal */}
-        <PopupModal
-          visible={showSuccessModal}
-          onClose={() => {
+      {/* Success Modal */}
+      <PopupModal
+        visible={showSuccessModal}
+        onClose={() => {
+          setShowSuccessModal(false);
+          router.push("/(tabs)");
+        }}
+        title="Congratulations"
+        description="Your new address has been added"
+        primaryAction={{
+          label: "Confirm",
+          onPress: () => {
             setShowSuccessModal(false);
             router.push("/(tabs)");
-          }}
-          title="Congratulations"
-          description="Your new address has been added"
-          primaryAction={{
-            label: "Confirm",
-            onPress: () => {
-              setShowSuccessModal(false);
-              router.push("/(tabs)");
-            },
-          }}
-        />
-      </SafeAreaView>
+          },
+        }}
+      />
     </>
   );
 };
