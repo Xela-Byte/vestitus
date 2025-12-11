@@ -8,9 +8,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = {};
-
-const NewAddress = (props: Props) => {
+const NewAddress = () => {
   const router = useRouter();
   const [selectedLocation, setSelectedLocation] =
     useState<SelectedLocation | null>(null);

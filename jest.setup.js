@@ -131,9 +131,25 @@ jest.mock("react-native/Libraries/Animated/AnimatedImplementation", () => {
     this.resetAnimation = jest.fn();
   });
 
+  const ValueXY = jest.fn(function (xy) {
+    this.x = new Value(xy?.x || 0);
+    this.y = new Value(xy?.y || 0);
+    this.setValue = jest.fn();
+    this.flattenOffset = jest.fn();
+    this.addListener = jest.fn(() => "listener_id");
+    this.removeListener = jest.fn();
+  });
+
   return {
     Animated: {
       timing: jest.fn((value, config) => ({
+        start: jest.fn((callback) => {
+          if (callback) callback();
+        }),
+        stop: jest.fn(),
+        reset: jest.fn(),
+      })),
+      spring: jest.fn((value, config) => ({
         start: jest.fn((callback) => {
           if (callback) callback();
         }),
@@ -154,7 +170,9 @@ jest.mock("react-native/Libraries/Animated/AnimatedImplementation", () => {
         stop: jest.fn(),
         reset: jest.fn(),
       })),
+      event: jest.fn(() => jest.fn()),
       Value,
+      ValueXY,
       createAnimatedComponent,
     },
     timing: jest.fn((value, config) => ({

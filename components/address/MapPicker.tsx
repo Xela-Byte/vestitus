@@ -27,8 +27,7 @@ interface MapPickerProps {
 export default function MapPicker({
   onLocationSelected,
 }: MapPickerProps): React.ReactElement {
-  const [selectedLocation, setSelectedLocation] =
-    useState<SelectedLocation | null>(null);
+  const [, setSelectedLocation] = useState<SelectedLocation | null>(null);
   const [markerPosition, setMarkerPosition] = useState<MarkerPosition>({
     x: width / 2,
     y: 200,
@@ -134,6 +133,7 @@ export default function MapPicker({
     [pan, calculateCoordinates, onLocationSelected]
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleConfirm = useCallback((): void => {
     const coordinates = calculateCoordinates(
       markerPosition.x,

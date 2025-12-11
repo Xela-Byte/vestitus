@@ -20,11 +20,9 @@ interface Address {
   address: string;
 }
 
-type Props = {};
-
 const ITEM_HEIGHT = 100;
 
-const SavedAddresses = (props: Props) => {
+const SavedAddresses = () => {
   const [addresses, setAddresses] = useState<Address[]>([
     { id: "1", label: "Home", address: "123 Main Street, Springfield, USA" },
     { id: "2", label: "Work", address: "456 Business Ave, Springfield, USA" },
@@ -149,7 +147,7 @@ const DraggableAddressItem = ({
     } else {
       translateY.value = withSpring(0);
     }
-  }, [isDragging, index]);
+  }, [isDragging, index]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const gesture = Gesture.Pan()
     .onStart(() => {

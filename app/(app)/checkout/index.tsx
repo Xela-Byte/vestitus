@@ -11,9 +11,7 @@ import { useForm } from "react-hook-form";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = {};
-
-const CheckoutScreen = (props: Props) => {
+const CheckoutScreen = () => {
   const { control, watch } = useForm();
   const promoCode = watch("promoCode", "");
   const [showSuccessModal, setShowSuccessModal] = useState(false);

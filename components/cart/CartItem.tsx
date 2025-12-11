@@ -6,9 +6,7 @@ import React from "react";
 import { View } from "react-native";
 import AppText from "../ui/AppText";
 
-type Props = {};
-
-const CartItem = (props: Props) => {
+const CartItem = () => {
   return (
     <View className="bg-[#efecec] rounded-xl px-3 py-5 flex flex-row items-start justify-between">
       <Image

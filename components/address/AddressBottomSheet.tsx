@@ -66,7 +66,7 @@ const AddressBottomSheet: React.FC<AddressBottomSheetProps> = ({
         useNativeDriver: false,
       }).start();
     }
-  }, [visible, panY, height]);
+  }, [visible, panY]);
 
   const panResponder = useRef(
     PanResponder.create({
