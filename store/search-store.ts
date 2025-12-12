@@ -1,12 +1,12 @@
 import { FilterOptions } from "@/types/filter";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
 
 interface SearchState {
   filters: FilterOptions;
   setFilters: (filters: FilterOptions) => void;
   resetFilters: () => void;
+  transcribedText: string;
+  setTranscribedText: (text: string) => void;
 }
 
 const DEFAULT_FILTERS: FilterOptions = {
@@ -16,22 +16,19 @@ const DEFAULT_FILTERS: FilterOptions = {
   useCustomPrice: false,
 };
 
-export const useSearchStore = create<SearchState>()(
-  persist(
-    (set) => ({
-      filters: DEFAULT_FILTERS,
-      setFilters: (filters: FilterOptions) =>
-        set({
-          filters,
-        }),
-      resetFilters: () =>
-        set({
-          filters: DEFAULT_FILTERS,
-        }),
+export const useSearchStore = create<SearchState>()((set) => ({
+  filters: DEFAULT_FILTERS,
+  setFilters: (filters: FilterOptions) =>
+    set({
+      filters,
     }),
-    {
-      name: "search-storage",
-      storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
-);
+  resetFilters: () =>
+    set({
+      filters: DEFAULT_FILTERS,
+    }),
+  transcribedText: "",
+  setTranscribedText: (text: string) =>
+    set({
+      transcribedText: text,
+    }),
+}));

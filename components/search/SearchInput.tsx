@@ -1,3 +1,4 @@
+import { useSearchStore } from "@/store/search-store";
 import { sizeBlock } from "@/styles/universalStyle";
 import Feather from "@expo/vector-icons/Feather";
 import React, { useState } from "react";
@@ -38,6 +39,9 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
   ) => {
     const [isFocused, setIsFocused] = useState(false);
     const [internalValue, setInternalValue] = useState("");
+    const updateTranscript = useSearchStore(
+      (state) => state.setTranscribedText
+    );
 
     const handleSpeechResult = (transcript: string) => {
       setInternalValue(transcript);
@@ -51,6 +55,11 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
       if (onSearchChange) {
         onSearchChange(text);
       }
+    };
+
+    const handleClearText = () => {
+      handleSpeechResult("");
+      updateTranscript("");
     };
 
     return (
@@ -80,7 +89,9 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
             style={{
               marginRight: sizeBlock.getWidthSize(3),
             }}
-            onPress={() => handleTextChange("")}
+            onPress={() => {
+              handleClearText();
+            }}
           />
         )}
 

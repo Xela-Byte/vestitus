@@ -1,4 +1,4 @@
-import { useAppStore } from "@/store/app-store";
+import { useSearchStore } from "@/store/search-store";
 import { sizeBlock } from "@/styles/universalStyle";
 import Feather from "@expo/vector-icons/Feather";
 import {
@@ -21,7 +21,7 @@ const SpeechToText = ({
 }: Props) => {
   const [recognizing, setRecognizing] = useState(false);
   const scaleAnim = useRef(new Animated.Value(1)).current;
-  const updateTranscript = useAppStore((state) => state.setTranscribedText);
+  const updateTranscript = useSearchStore((state) => state.setTranscribedText);
 
   const runAnimation = useCallback(() => {
     Animated.loop(
