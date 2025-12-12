@@ -1,4 +1,4 @@
-import { useAppStore } from "@/store/app-store";
+import { useSearchStore } from "@/store/search-store";
 import { sizeBlock } from "@/styles/universalStyle";
 import Feather from "@expo/vector-icons/Feather";
 import React, { useEffect, useState } from "react";
@@ -38,7 +38,7 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
-    const transribedText = useAppStore((state) => state.transcribedText);
+    const transribedText = useSearchStore((state) => state.transcribedText);
 
     useEffect(() => {
       if (transribedText && onSearchChange) {
