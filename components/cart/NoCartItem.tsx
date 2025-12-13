@@ -3,9 +3,7 @@ import React from "react";
 import { View } from "react-native";
 import AppText from "../ui/AppText";
 
-type Props = Record<string, never>;
-
-const NoCartItem = (props: Props) => {
+const NoCartItem = () => {
   return (
     <View className="flex-1 flex items-center justify-center gap-y-1">
       <FontAwesome

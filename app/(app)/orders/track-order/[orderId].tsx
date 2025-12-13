@@ -10,9 +10,7 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = Record<string, never>;
-
-const TrackOrder = (props: Props) => {
+const TrackOrder = () => {
   const { orderId } = useLocalSearchParams<{ orderId: string }>();
   const [order, setOrder] = useState<Order | null>(null);
   const [bottomSheetVisible, setBottomSheetVisible] = useState(true);

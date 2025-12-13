@@ -9,13 +9,11 @@ import { useForm } from "react-hook-form";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = Record<string, never>;
-
 interface ForgotPasswordFormData {
   email: string;
 }
 
-const ForgotPasswordScreen = (props: Props) => {
+const ForgotPasswordScreen = () => {
   const { control, handleSubmit } = useForm<ForgotPasswordFormData>({
     defaultValues: {
       email: "",

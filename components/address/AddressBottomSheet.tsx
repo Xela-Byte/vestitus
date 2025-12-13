@@ -103,7 +103,6 @@ const AddressBottomSheet: React.FC<AddressBottomSheetProps> = ({
     setSelectedNickname("Home");
     setCustomAddress("");
     setIsDefaultAddress(false);
-    setShowNicknameDropdown(false);
   };
 
   const handleAdd = () => {

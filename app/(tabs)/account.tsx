@@ -11,9 +11,7 @@ import { useState } from "react";
 import { Pressable, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = Record<string, never>;
-
-const AccountScreen = (props: Props) => {
+const AccountScreen = () => {
   const router = useRouter();
   const logout = useAuthStore((state) => state.logout);
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);

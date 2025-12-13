@@ -8,14 +8,12 @@ import React from "react";
 import { FlatList, Pressable, View } from "react-native";
 import AppText from "../ui/AppText";
 
-type Props = Record<string, never>;
-
 type ResultItemProps = {
   item: Product;
   onProductSelect: () => void;
 };
 
-const NoSearchResult = (props: Props) => {
+const NoSearchResult = () => {
   return (
     <View className="flex-1 flex items-center justify-center gap-y-1">
       <FontAwesome name="search" size={64} color="#c3c3c3" className="mb-3" />
@@ -106,7 +104,7 @@ const MOCK_SEARCHES: Product[] = [
   },
 ];
 
-const SearchResult = (props: Props) => {
+const SearchResult = () => {
   const handleDelete = (item: string) => {
     console.log("====================================");
     console.log(item);

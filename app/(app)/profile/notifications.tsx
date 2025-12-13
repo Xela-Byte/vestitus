@@ -45,9 +45,7 @@ const initialState: NotificationSettings = {
   newTips: true,
 };
 
-type Props = {};
-
-const Notifications = (props: Props) => {
+const Notifications = () => {
   const [settings, setSettings] = useState<NotificationSettings>(initialState);
 
   const handleToggle = (id: NotificationId) => {

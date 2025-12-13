@@ -5,9 +5,7 @@ import SearchInput from "@/components/ui/SearchInput";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = Record<string, never>;
-
-const SearchScreen = (props: Props) => {
+const SearchScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       {/* Header */}

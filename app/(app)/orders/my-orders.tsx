@@ -110,9 +110,7 @@ const renderEmptyState = (selectedFilter: string) => (
   </View>
 );
 
-type Props = Record<string, never>;
-
-const MyOrdersScreen = (props: Props) => {
+const MyOrdersScreen = () => {
   const [orders] = useState<Order[]>(MOCK_ORDERS);
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
 

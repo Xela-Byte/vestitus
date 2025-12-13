@@ -8,9 +8,7 @@ import React from "react";
 import { FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = Record<string, never>;
-
-const ProductReview = (props: Props) => {
+const ProductReview = () => {
   return (
     <SafeAreaView>
       <View className="px-5">

@@ -11,9 +11,7 @@ import React, { useMemo } from "react";
 import { FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = Record<string, never>;
-
-const NotificationScreen = (props: Props) => {
+const NotificationScreen = () => {
   // Group notifications by date
   const groupedNotifications = useMemo(() => {
     const groups: { [key: string]: NotificationItem[] } = {};

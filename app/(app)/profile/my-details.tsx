@@ -15,9 +15,7 @@ interface MyDetailsFormData {
   gender: string;
 }
 
-type Props = {};
-
-const MyDetails = (props: Props) => {
+const MyDetails = () => {
   const user = useAuthStore((state) => state.user);
   const router = useRouter();
   const { control, handleSubmit, watch, setValue } = useForm<MyDetailsFormData>(

@@ -5,9 +5,7 @@ import React from "react";
 import { FlatList, View } from "react-native";
 import ProductCard from "./ProductCard";
 
-type Props = Record<string, never>;
-
-const ProductView = (props: Props) => {
+const ProductView = () => {
   const bottomTabBarheight = useBottomTabBarHeight();
 
   // Generate mock clothing data

@@ -210,7 +210,9 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
                       onPress={primaryAction.onPress}
                       loading={primaryAction.loading}
                       disabled={primaryAction.disabled}
-                      variant={variant === "destructive" ? "danger" : "primary"}
+                      variant={
+                        variant === "destructive" ? "secondary" : "primary"
+                      }
                       className="flex-1"
                     />
                   )}

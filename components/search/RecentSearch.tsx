@@ -3,8 +3,6 @@ import React from "react";
 import { FlatList, Pressable, View } from "react-native";
 import AppText from "../ui/AppText";
 
-type Props = Record<string, never>;
-
 type SearchItemProps = {
   text: string;
   onDelete: () => void;
@@ -28,7 +26,7 @@ const SearchItem = ({
   );
 };
 
-const RecentSearch = (props: Props) => {
+const RecentSearch = () => {
   const handleDelete = (item: string) => {
     console.log("====================================");
     console.log(item);

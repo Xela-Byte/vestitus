@@ -8,9 +8,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = Record<string, never>;
-
-const HomeScreen = (props: Props) => {
+const HomeScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchText, setSearchText] = useState("");
   const handleCategorySelect = (category: string) => {

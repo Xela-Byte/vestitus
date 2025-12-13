@@ -7,9 +7,7 @@ import React, { useMemo, useState } from "react";
 import { Pressable, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-type Props = Record<string, never>;
-
-const VerifyCodeScreen = (props: Props) => {
+const VerifyCodeScreen = () => {
   const { email } = useLocalSearchParams();
   const [code, setCode] = useState("");
   const isValid = useMemo(() => code.length === 4, [code]);
