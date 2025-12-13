@@ -11,7 +11,7 @@ import {
   getAddressByCoordinates,
   getAddressesByArea,
   getAvailableAreas,
-} from "@/utils/addressDatabase";
+} from "@/utils/data/addressDatabase";
 
 /**
  * Example 1: Find nearest address to a point
@@ -45,7 +45,7 @@ export function exampleFindNearbyAddresses(): void {
   const nearbyAddresses = findAddressesNearby(userLocation, 1.0); // 1km radius
 
   console.log(`Found ${nearbyAddresses.length} addresses nearby:`);
-  nearbyAddresses.forEach((addr) => {
+  nearbyAddresses.forEach((addr: Address) => {
     const distance = calculateDistance(userLocation, addr);
     console.log(`- ${addr.name} (${distance.toFixed(2)}km away)`);
   });
@@ -58,7 +58,7 @@ export function exampleGetAddressesByArea(): void {
   const lekki = getAddressesByArea("Lekki");
 
   console.log(`Found ${lekki.length} addresses in Lekki:`);
-  lekki.forEach((addr) => {
+  lekki.forEach((addr: Address) => {
     console.log(`- ${addr.name}`);
   });
 }
@@ -70,7 +70,7 @@ export function exampleGetAvailableAreas(): void {
   const areas = getAvailableAreas();
 
   console.log(`Available areas in Lagos:`);
-  areas.forEach((area) => {
+  areas.forEach((area: string) => {
     console.log(`- ${area}`);
   });
 }

@@ -5,7 +5,7 @@ import type {
   PanGesture,
   SelectedLocation,
 } from "@/types/address";
-import { getAddressByCoordinates } from "@/utils/addressDatabase";
+import { getAddressByCoordinates } from "@/utils/data/addressDatabase";
 import Entypo from "@expo/vector-icons/Entypo";
 import React, { useCallback, useRef, useState } from "react";
 import type { PanResponderInstance } from "react-native";

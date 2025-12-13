@@ -1,4 +1,5 @@
 import CheckCircleIcon from "@/assets/icons/check-circle-icon.svg";
+import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Modal, ModalProps, TouchableOpacity, View } from "react-native";
 import AppButton from "./AppButton";
@@ -71,6 +72,12 @@ export interface PopupModalProps extends Omit<ModalProps, "visible"> {
    * NativeWind className for the content area
    */
   contentClassName?: string;
+
+  /**
+   * Variant type of the modal (success or destructive)
+   * @default 'success'
+   */
+  variant?: "success" | "destructive";
 }
 
 /**
@@ -109,6 +116,7 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
       size = "md",
       containerClassName,
       contentClassName,
+      variant = "success",
       transparent = true,
       animationType = "fade",
       ...modalProps
@@ -156,12 +164,18 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
             <View
               className={`p-6 flex flex-col items-center ${contentClassName || ""}`}
             >
-              <CheckCircleIcon className="mx-auto" />
+              {variant === "success" ? (
+                <CheckCircleIcon className="mx-auto" />
+              ) : (
+                <MaterialIcons name="error" size={48} color="#ef4444" />
+              )}
               {/* Title */}
               {title && (
                 <AppText
                   variant="h3"
-                  className="text-lg font-bold text-center text-gray-900 mt-3 mb-1"
+                  className={`text-lg font-bold text-center mt-3 mb-1 ${
+                    variant === "destructive" ? "text-red-600" : "text-gray-900"
+                  }`}
                 >
                   {title}
                 </AppText>
@@ -196,7 +210,7 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
                       onPress={primaryAction.onPress}
                       loading={primaryAction.loading}
                       disabled={primaryAction.disabled}
-                      variant="primary"
+                      variant={variant === "destructive" ? "danger" : "primary"}
                       className="flex-1"
                     />
                   )}

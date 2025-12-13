@@ -1,4 +1,5 @@
 import AppButton from "@/components/ui/AppButton";
+import AppDropdown from "@/components/ui/AppDropdown";
 import AppText from "@/components/ui/AppText";
 import { sizeBlock } from "@/styles/universalStyle";
 import type { SelectedLocation } from "@/types/address";
@@ -41,7 +42,6 @@ const AddressBottomSheet: React.FC<AddressBottomSheetProps> = ({
 }) => {
   const [selectedNickname, setSelectedNickname] = useState<string>("Home");
   const [customAddress, setCustomAddress] = useState<string>("");
-  const [showNicknameDropdown, setShowNicknameDropdown] = useState(false);
   const [isDefaultAddress, setIsDefaultAddress] = useState(false);
   const panY = useRef(new Animated.Value(height)).current;
 
@@ -175,51 +175,14 @@ const AddressBottomSheet: React.FC<AddressBottomSheetProps> = ({
             </View>
 
             {/* Address Nickname Dropdown */}
-            <View className="mb-6">
-              <AppText className="text-secondary text-sm font-outfit-medium mb-2">
-                Address Nickname
-              </AppText>
-              <TouchableOpacity
-                onPress={() => setShowNicknameDropdown(!showNicknameDropdown)}
-                className="flex-row items-center justify-between border border-gray-300 rounded-lg px-4 py-3 bg-white"
-              >
-                <AppText className="font-outfit-regular text-primary">
-                  {selectedNickname}
-                </AppText>
-                <AntDesign
-                  name={showNicknameDropdown ? "up" : "down"}
-                  size={16}
-                  color="#808080"
-                />
-              </TouchableOpacity>
-
-              {/* Dropdown Menu */}
-              {showNicknameDropdown && (
-                <View className="absolute top-16 left-0 right-0 bg-white border border-gray-300 rounded-lg mx-0 z-50 shadow-lg">
-                  {ADDRESS_NICKNAMES.map((nickname, index) => (
-                    <TouchableOpacity
-                      key={nickname}
-                      onPress={() => {
-                        setSelectedNickname(nickname);
-                        setShowNicknameDropdown(false);
-                      }}
-                      className={`px-4 py-3 flex-row items-center justify-between ${
-                        index !== ADDRESS_NICKNAMES.length - 1
-                          ? "border-b border-gray-200"
-                          : ""
-                      }`}
-                    >
-                      <AppText className="font-outfit-regular text-primary">
-                        {nickname}
-                      </AppText>
-                      {selectedNickname === nickname && (
-                        <AntDesign name="check" size={16} color="#1A1A1A" />
-                      )}
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              )}
-            </View>
+            <AppDropdown
+              label="Address Nickname"
+              options={ADDRESS_NICKNAMES}
+              value={selectedNickname}
+              onSelect={setSelectedNickname}
+              placeholder="Select nickname"
+              showCheckmark={true}
+            />
 
             {/* Address Input */}
             <View className="mb-6">
