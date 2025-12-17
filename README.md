@@ -6,7 +6,9 @@
   [![Build and Test](https://github.com/Xela-Byte/vestitus/actions/workflows/test.yml/badge.svg)](https://github.com/Xela-Byte/vestitus/actions/workflows/test.yml)
   ![GitHub release (latest by tag)](https://img.shields.io/github/v/release/Xela-Byte/vestitus?label=Release&logo=github)
   [![Download APK](https://img.shields.io/badge/Download-APK-brightgreen?style=flat&logo=android)](https://github.com/Xela-Byte/vestitus/releases/download/android_release/app-release.apk)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+  [![Contributing](https://img.shields.io/badge/Contributing-Guidelines-blue.svg)](./CONTRIBUTING.md)
+  [![Security](https://img.shields.io/badge/Security-Policy-red.svg)](./SECURITY.md)
   [![GitHub issues](https://img.shields.io/github/issues/Xela-Byte/vestitus)](https://github.com/Xela-Byte/vestitus/issues)
   
   A modern, feature-rich e-commerce mobile app built with React Native and Expo

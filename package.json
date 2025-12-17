@@ -1,7 +1,34 @@
 {
   "name": "vestitus",
+  "description": "A modern, feature-rich e-commerce mobile app built with React Native and Expo. Cross-platform shopping experience on iOS, Android, and Web.",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": "Vestitus Contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xela-Byte/vestitus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Xela-Byte/vestitus/issues"
+  },
+  "homepage": "https://github.com/Xela-Byte/vestitus#readme",
+  "keywords": [
+    "expo",
+    "react-native",
+    "e-commerce",
+    "mobile-app",
+    "ios",
+    "android",
+    "web",
+    "typescript",
+    "nativewind",
+    "zustand"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -68,6 +95,5 @@
     "jest-expo": "~54.0.14",
     "msw": "^2.12.4",
     "typescript": "~5.9.2"
-  },
-  "private": true
+  }
 }
