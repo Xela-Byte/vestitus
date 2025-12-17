@@ -1,8 +1,35 @@
-# Vestitus
 
-## Project Overview
+# ✨ Vestitus
+<div align="center">
+  <img src="assets/images/logo.png" alt="vestitus Logo" width="150">
+  <h3>Build better habits, one seed at a time</h3>
+  
+  [![Build and Test](https://github.com/Xela-Byte/vestitus/actions/workflows/test.yml/badge.svg)](https://github.com/Xela-Byte/vestitus/actions/workflows/test.yml)
+  ![GitHub release (latest by tag)](https://img.shields.io/github/v/release/Xela-Byte/vestitus?label=Release&logo=github)
+  [![Download APK](https://img.shields.io/badge/Download-APK-brightgreen?style=flat&logo=android)](https://github.com/Xela-Byte/vestitus/releases/download/v1.0.0/Habit.Seed_1.0.apk)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![GitHub issues](https://img.shields.io/github/issues/Xela-Byte/vestitus)](https://github.com/Xela-Byte/vestitus/issues)
+</div>
 
 **Vestitus** is an Expo-based React Native mobile e-commerce app (runs on iOS, Android, Web) with TypeScript, NativeWind styling, and Zustand state management.
+
+## ✨ Features
+
+- 🛍️ Browse and shop products with detailed views and images
+- 🔍 Advanced search with voice input and smart filters
+- 🎤 Speech-to-text search for hands-free product discovery
+- 💳 Shopping cart management with easy checkout
+- ❤️ Save favorite products for quick access later
+- 📍 Address management with interactive map picker for delivery
+- 📦 Order tracking with real-time status updates
+- ⭐ Product reviews and ratings system
+- 🔔 Push notifications for order updates and promotions
+- 🔐 Secure authentication with email verification and password recovery
+- 👤 User profile management
+- 📱 Works on iOS, Android, and Web
+- 🚀 Onboarding experience for new users
+- 🎨 Beautiful UI with custom fonts (Outfit & SF Pro Display)
+- 💾 Persistent cart and user data with offline support
 
 ## Architecture & Key Patterns
 
