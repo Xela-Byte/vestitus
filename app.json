@@ -30,7 +30,12 @@
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "package": "com.xelabyte.vestitus",
-      "permissions": ["RECORD_AUDIO", "INTERNET", "ACCESS_NETWORK_STATE"]
+      "permissions": [
+        "RECORD_AUDIO",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "plugins": [
       "expo-router",
@@ -63,6 +68,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c4863fbb-d826-42dd-a50c-7248e42ab84b"
+      }
     }
   }
 }
