@@ -1,3 +1,4 @@
+import { sizeBlock } from "@/styles/universalStyle";
 import React from "react";
 import { Text, TextProps, TextStyle } from "react-native";
 
@@ -16,7 +17,15 @@ interface AppTextProps extends TextProps {
   /**
    * Variant preset for common text styles
    */
-  variant?: "h1" | "h2" | "h3" | "h4" | "body" | "caption" | "button";
+  variant?:
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "body"
+    | "caption"
+    | "button"
+    | "subtitle";
   weight?:
     | "thin"
     | "extralight"
@@ -77,45 +86,51 @@ const AppText = React.forwardRef<Text, AppTextProps>(
     // Define variant presets
     const variantStyles: Record<string, TextStyle> = {
       h1: {
-        fontSize: 64,
+        fontSize: sizeBlock.fontSize(64),
         fontWeight: "800",
-        lineHeight: 64,
+        lineHeight: sizeBlock.getHeightSize(60),
         fontFamily: "Outfit-Bold",
       },
       h2: {
-        fontSize: 32,
+        fontSize: sizeBlock.fontSize(32),
         fontWeight: "700",
-        lineHeight: 32,
+        lineHeight: sizeBlock.getHeightSize(32),
         fontFamily: "Outfit-Bold",
       },
       h3: {
-        fontSize: 20,
+        fontSize: sizeBlock.fontSize(20),
         fontWeight: "600",
-        lineHeight: 28,
+        lineHeight: sizeBlock.getHeightSize(28),
         fontFamily: "Outfit-SemiBold",
       },
       h4: {
-        fontSize: 16,
+        fontSize: sizeBlock.fontSize(16),
         fontWeight: "500",
-        lineHeight: 28,
+        lineHeight: sizeBlock.getHeightSize(28),
         fontFamily: "Outfit-Medium",
       },
       body: {
-        fontSize: 16,
+        fontSize: sizeBlock.fontSize(16),
         fontWeight: "400",
-        lineHeight: 24,
+        lineHeight: sizeBlock.getHeightSize(24),
         fontFamily: "Outfit-Regular",
       },
       caption: {
-        fontSize: 12,
+        fontSize: sizeBlock.fontSize(12),
         fontWeight: "400",
-        lineHeight: 18,
+        lineHeight: sizeBlock.getHeightSize(18),
+        fontFamily: "Outfit-Regular",
+      },
+      subtitle: {
+        fontSize: sizeBlock.fontSize(10),
+        fontWeight: "400",
+        lineHeight: sizeBlock.getHeightSize(14),
         fontFamily: "Outfit-Regular",
       },
       button: {
-        fontSize: 16,
+        fontSize: sizeBlock.fontSize(16),
         fontWeight: "600",
-        lineHeight: 24,
+        lineHeight: sizeBlock.getHeightSize(24),
         fontFamily: "Outfit-SemiBold",
       },
     };

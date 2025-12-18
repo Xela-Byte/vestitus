@@ -2,6 +2,8 @@ import AppButton from "@/components/ui/AppButton";
 import AppInput from "@/components/ui/AppInput";
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
+import { useDeviceType } from "@/hooks";
+import { sizeBlock } from "@/styles/universalStyle";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "@/utils/regex";
 import { Link } from "expo-router";
 import { useForm } from "react-hook-form";
@@ -28,13 +30,21 @@ export default function RegisterScreen() {
     console.log("====================================");
   };
 
+  const isTablet = useDeviceType() === "tablet";
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <View className="p-5">
+        <View
+          style={{
+            padding: isTablet
+              ? sizeBlock.getWidthSize(15)
+              : sizeBlock.getWidthSize(20),
+          }}
+        >
           <HeaderComponent />
-          <AppText className="font-outfit-semibold text-3xl">
+          <AppText variant="h2" className="font-outfit-semibold">
             Create an account
           </AppText>
           <AppText variant="body" className="text-secondary mt-1">
@@ -43,7 +53,14 @@ export default function RegisterScreen() {
         </View>
 
         {/* Form */}
-        <View className="gap-5 px-5 py-6">
+        <View
+          style={{
+            padding: isTablet
+              ? sizeBlock.getWidthSize(15)
+              : sizeBlock.getWidthSize(20),
+          }}
+          className="gap-5"
+        >
           {/* Email Input */}
           <AppInput<RegisterFormData>
             control={control}
@@ -91,23 +108,33 @@ export default function RegisterScreen() {
             }}
           />
 
-          <AppText className="text-primary text-sm">
+          <AppText variant="subtitle" className="text-primary text-sm">
             By signing up you agree to our{" "}
             <Link href={"https://xelabyte.vercel.app"} asChild>
-              <AppText className="text-primary font-outfit-medium underline text-sm">
+              <AppText
+                variant="subtitle"
+                className="font-outfit-medium underline"
+              >
                 Terms
               </AppText>
             </Link>
             ,{" "}
             <Link href={"https://github.com/Xela-Byte"} asChild>
-              <AppText className="text-primary font-outfit-medium underline text-sm">
+              <AppText
+                variant="subtitle"
+                className="font-outfit-medium underline"
+              >
                 {" "}
                 Privacy Policy
               </AppText>
             </Link>{" "}
             and{" "}
             <Link href={"https://x.com/xelaByte"} asChild>
-              <AppText className="text-primary font-outfit-medium underline text-sm">
+              <AppText
+                variant="subtitle"
+                className="font-outfit-medium underline"
+              >
+                {" "}
                 Cookie Use
               </AppText>
             </Link>
@@ -117,7 +144,7 @@ export default function RegisterScreen() {
           {/* Login Button */}
           <View className="mt-8">
             <AppButton
-              disabled
+              // disabled
               label="Register"
               onPress={handleSubmit(onSubmit)}
             />
@@ -126,9 +153,15 @@ export default function RegisterScreen() {
       </ScrollView>
       <View className="absolute bottom-0 w-full h-24 p-5">
         <Link href={"/login"} asChild>
-          <AppText className="text-primary text-sm text-center">
+          <AppText
+            variant="subtitle"
+            className="text-primary text-sm text-center"
+          >
             Already have an account?{" "}
-            <AppText className="text-primary font-outfit-medium underline text-sm">
+            <AppText
+              variant="subtitle"
+              className="text-primary font-outfit-medium underline"
+            >
               Get in jor!
             </AppText>
           </AppText>

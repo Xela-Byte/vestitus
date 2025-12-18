@@ -2,6 +2,8 @@ import AppButton from "@/components/ui/AppButton";
 import AppInput from "@/components/ui/AppInput";
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
+import { useDeviceType } from "@/hooks";
+import { sizeBlock } from "@/styles/universalStyle";
 import { EMAIL_REGEX } from "@/utils/regex";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -19,6 +21,7 @@ const ForgotPasswordScreen = () => {
       email: "",
     },
   });
+  const isTablet = useDeviceType() === "tablet";
 
   const router = useRouter();
 
@@ -31,9 +34,15 @@ const ForgotPasswordScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       {/* Header */}
-      <View className="p-5">
+      <View
+        style={{
+          padding: isTablet
+            ? sizeBlock.getWidthSize(15)
+            : sizeBlock.getWidthSize(20),
+        }}
+      >
         <HeaderComponent />
-        <AppText className="font-outfit-semibold text-3xl">
+        <AppText variant="h2" className="font-outfit-semibold text-3xl">
           Forgot password
         </AppText>
         <AppText variant="body" className="text-secondary mt-1">
@@ -43,7 +52,14 @@ const ForgotPasswordScreen = () => {
       </View>
 
       {/* Form */}
-      <View className="gap-5 px-5 py-6">
+      <View
+        style={{
+          padding: isTablet
+            ? sizeBlock.getWidthSize(15)
+            : sizeBlock.getWidthSize(20),
+        }}
+        className="gap-5"
+      >
         {/* Email Input */}
         <AppInput<ForgotPasswordFormData>
           control={control}
@@ -61,7 +77,14 @@ const ForgotPasswordScreen = () => {
         />
       </View>
 
-      <View className="p-5 mt-32">
+      <View
+        style={{
+          padding: isTablet
+            ? sizeBlock.getWidthSize(15)
+            : sizeBlock.getWidthSize(20),
+        }}
+        className="mt-32"
+      >
         {/* Submit Button */}
         <AppButton label="Send Code" onPress={handleSubmit(onSubmit)} />
       </View>

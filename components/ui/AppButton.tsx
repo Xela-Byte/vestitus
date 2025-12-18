@@ -113,7 +113,7 @@ const AppButton = React.forwardRef<any, AppButtonProps>(
       iconPosition = "left",
       className,
       variant = "primary",
-      size = "md",
+      size = "sm",
       disabled = false,
       loading = false,
       loadingIndicator,
@@ -190,7 +190,8 @@ const AppButton = React.forwardRef<any, AppButtonProps>(
 
           {(label || children) && (
             <AppText
-              className={`font-semibold text-center ${getTextColor()} ${textClassName || ""}`}
+              variant={"button"}
+              className={`font-outfit-semibold text-center ${getTextColor()} ${textClassName || ""} `}
             >
               {label || children}
             </AppText>

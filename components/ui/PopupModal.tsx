@@ -1,4 +1,5 @@
 import CheckCircleIcon from "@/assets/icons/check-circle-icon.svg";
+import { sizeBlock } from "@/styles/universalStyle";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Modal, ModalProps, TouchableOpacity, View } from "react-native";
@@ -165,14 +166,21 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
               className={`p-6 flex flex-col items-center ${contentClassName || ""}`}
             >
               {variant === "success" ? (
-                <CheckCircleIcon className="mx-auto" />
+                <CheckCircleIcon
+                  size={sizeBlock.fontSize(48)}
+                  className="mx-auto"
+                />
               ) : (
-                <MaterialIcons name="error" size={48} color="#ef4444" />
+                <MaterialIcons
+                  name="error"
+                  size={sizeBlock.fontSize(48)}
+                  color="#ef4444"
+                />
               )}
               {/* Title */}
               {title && (
                 <AppText
-                  variant="h3"
+                  variant="h4"
                   className={`text-lg font-bold text-center mt-3 mb-1 ${
                     variant === "destructive" ? "text-red-600" : "text-gray-900"
                   }`}
@@ -183,7 +191,10 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
 
               {/* Description */}
               {description && (
-                <AppText className="text-sm text-center text-secondary">
+                <AppText
+                  variant="caption"
+                  className="text-center text-secondary"
+                >
                   {description}
                 </AppText>
               )}

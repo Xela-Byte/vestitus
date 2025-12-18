@@ -38,7 +38,7 @@ const HeaderComponent = ({
         <Pressable onPress={handlePress}>
           <ArrowLeft
             name="chevron-with-circle-left"
-            size={sizeBlock.getWidthSize(30)}
+            size={sizeBlock.fontSize(30)}
             color="#1a1a1a"
           />
         </Pressable>

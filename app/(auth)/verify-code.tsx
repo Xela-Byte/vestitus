@@ -2,6 +2,8 @@ import AppButton from "@/components/ui/AppButton";
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
 import PinCodeInput from "@/components/ui/PinCodeInput";
+import { useDeviceType } from "@/hooks";
+import { sizeBlock } from "@/styles/universalStyle";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useMemo, useState } from "react";
 import { Pressable, View } from "react-native";
@@ -12,6 +14,7 @@ const VerifyCodeScreen = () => {
   const [code, setCode] = useState("");
   const isValid = useMemo(() => code.length === 4, [code]);
   const router = useRouter();
+  const isTablet = useDeviceType() === "tablet";
 
   const handleResendCode = () => {
     // Logic to resend the code
@@ -29,9 +32,15 @@ const VerifyCodeScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       {/* Header */}
-      <View className="p-5">
+      <View
+        style={{
+          padding: isTablet
+            ? sizeBlock.getWidthSize(15)
+            : sizeBlock.getWidthSize(20),
+        }}
+      >
         <HeaderComponent />
-        <AppText className="font-outfit-semibold text-3xl">
+        <AppText variant="h2" className="font-outfit-semibold text-3xl">
           Enter 4 Digit Code
         </AppText>
         <AppText variant="body" className="text-secondary mt-1">
@@ -41,7 +50,14 @@ const VerifyCodeScreen = () => {
       </View>
 
       {/* Form */}
-      <View className="gap-5 px-5 py-6">
+      <View
+        style={{
+          padding: isTablet
+            ? sizeBlock.getWidthSize(15)
+            : sizeBlock.getWidthSize(20),
+        }}
+        className="gap-5"
+      >
         <PinCodeInput
           value={code}
           onChange={setCode}
@@ -51,9 +67,15 @@ const VerifyCodeScreen = () => {
       </View>
 
       <Pressable onPress={handleResendCode}>
-        <AppText className="text-primary text-sm text-center">
+        <AppText
+          variant="subtitle"
+          className="text-primary text-sm text-center"
+        >
           Email not received?{" "}
-          <AppText className="text-primary underline text-sm">
+          <AppText
+            variant="subtitle"
+            className="text-primary underline text-sm"
+          >
             Resend code
           </AppText>
         </AppText>

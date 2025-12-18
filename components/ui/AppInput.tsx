@@ -60,11 +60,7 @@ const AppInput = <TFieldValues extends FieldValues>({
           marginBottom: sizeBlock.getHeightSize(5),
         }}
       >
-        {label && (
-          <AppText className="mb-1" weight="medium">
-            {label}
-          </AppText>
-        )}
+        {label && <AppText variant="caption">{label}</AppText>}
       </View>
       <Controller
         control={control}
@@ -77,8 +73,12 @@ const AppInput = <TFieldValues extends FieldValues>({
                 className={`${className} w-full rounded-xl px-4 border flex flex-row items-center relative
               bg-white
               ${error ? "border-red-500" : value && value.length > 0 && !error ? "border-green" : isFocused ? "border-gray-400" : "border-stroke"}
-              ${mutliline ? "h-40" : "h-14"}
               `}
+                style={{
+                  height: mutliline
+                    ? sizeBlock.getHeightSize(128)
+                    : sizeBlock.getHeightSize(40),
+                }}
               >
                 <TextInput
                   ref={inputRef}
@@ -95,6 +95,9 @@ const AppInput = <TFieldValues extends FieldValues>({
                   keyboardType={keyboardType}
                   cursorColor="#e6e6e6"
                   autoCorrect={false}
+                  style={{
+                    fontSize: sizeBlock.fontSize(12),
+                  }}
                   className={`${name && name.toLowerCase().includes("email") ? "lowercase" : "normal-case"} font-outfit-regular ${enableExtraComponent ? "w-[80%]" : "w-[90%]"} h-full text-[#060109] pr-[${enableExtraComponent ? "4" : "0"}]`}
                   onFocus={() => {
                     onFocus && onFocus();
@@ -117,7 +120,7 @@ const AppInput = <TFieldValues extends FieldValues>({
                       name="check-circle"
                       className="ml-auto text-green"
                       color={"#0C9409"}
-                      size={sizeBlock.getWidthSize(16)}
+                      size={sizeBlock.fontSize(16)}
                     />
                   </>
                 )}
@@ -127,7 +130,7 @@ const AppInput = <TFieldValues extends FieldValues>({
                       name="exclamation-circle"
                       className="ml-auto"
                       color={"red"}
-                      size={sizeBlock.getWidthSize(16)}
+                      size={sizeBlock.fontSize(16)}
                     />
                   </>
                 )}
@@ -138,14 +141,17 @@ const AppInput = <TFieldValues extends FieldValues>({
                       name={showPassword ? "eye-with-line" : "eye"}
                       className="ml-auto"
                       color={"#666666"}
-                      size={sizeBlock.getWidthSize(16)}
+                      size={sizeBlock.fontSize(16)}
                     />
                   </>
                 )}
                 {extraComponent && extraComponent}
               </View>
               {error && (
-                <AppText className="text-xs my-2 text-red-500">
+                <AppText
+                  variant="caption"
+                  className="text-xs my-2 text-red-500"
+                >
                   {error.message || "Error"}
                 </AppText>
               )}

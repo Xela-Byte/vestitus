@@ -2,7 +2,9 @@ import AppButton from "@/components/ui/AppButton";
 import AppInput from "@/components/ui/AppInput";
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
+import { useDeviceType } from "@/hooks";
 import { useAuthStore } from "@/store";
+import { sizeBlock } from "@/styles/universalStyle";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "@/utils/regex";
 import { Link } from "expo-router";
 import { useState } from "react";
@@ -27,6 +29,7 @@ export default function LoginScreen() {
     },
   });
 
+  const isTablet = useDeviceType() === "tablet";
   const login = useAuthStore((state) => state.login);
   const [loading, setLoading] = useState(false);
 
@@ -42,9 +45,15 @@ export default function LoginScreen() {
     <SafeAreaView className="flex-1 bg-white">
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <View className="p-5">
+        <View
+          style={{
+            padding: isTablet
+              ? sizeBlock.getWidthSize(15)
+              : sizeBlock.getWidthSize(20),
+          }}
+        >
           <HeaderComponent />
-          <AppText className="font-outfit-semibold text-3xl">
+          <AppText variant="h2" className="font-outfit-semibold text-3xl">
             Login to your account
           </AppText>
           <AppText variant="body" className="text-secondary mt-1">
@@ -53,7 +62,14 @@ export default function LoginScreen() {
         </View>
 
         {/* Form */}
-        <View className="gap-5 px-5 py-6">
+        <View
+          style={{
+            padding: isTablet
+              ? sizeBlock.getWidthSize(15)
+              : sizeBlock.getWidthSize(20),
+          }}
+          className="gap-5"
+        >
           {/* Email Input */}
           <AppInput<LoginFormData>
             control={control}
@@ -87,10 +103,17 @@ export default function LoginScreen() {
             }}
           />
 
-          <Link href={"/forgot-password"} asChild>
-            <AppText className="text-primary text-sm">
+          <Link
+            href={"/forgot-password"}
+            className={isTablet ? "mt-3" : ""}
+            asChild
+          >
+            <AppText variant="subtitle" className="text-primary text-sm">
               Forgot your password?{" "}
-              <AppText className="text-primary underline text-sm">
+              <AppText
+                variant="subtitle"
+                className="text-primary underline text-sm"
+              >
                 Reset your password
               </AppText>
             </AppText>
@@ -109,9 +132,15 @@ export default function LoginScreen() {
       </ScrollView>
       <View className="absolute bottom-0 w-full h-24 p-5">
         <Link href={"/register"} asChild>
-          <AppText className="text-primary text-sm text-center">
+          <AppText
+            variant="subtitle"
+            className="text-primary text-sm text-center"
+          >
             Don&apos;t have an account?{" "}
-            <AppText className="text-primary font-outfit-medium underline text-sm">
+            <AppText
+              variant="subtitle"
+              className="text-primary font-outfit-medium underline text-sm"
+            >
               Join us!
             </AppText>
           </AppText>

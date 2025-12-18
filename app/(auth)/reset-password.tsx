@@ -3,6 +3,8 @@ import AppInput from "@/components/ui/AppInput";
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
 import PopupModal from "@/components/ui/PopupModal";
+import { useDeviceType } from "@/hooks";
+import { sizeBlock } from "@/styles/universalStyle";
 import { PASSWORD_REGEX } from "@/utils/regex";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -22,6 +24,7 @@ export default function ResetPasswordScreen() {
       confirmPassword: "",
     },
   });
+  const isTablet = useDeviceType() === "tablet";
 
   const onSubmit = async (data: ResetFormData) => {
     console.log("====================================");
@@ -45,9 +48,15 @@ export default function ResetPasswordScreen() {
       />
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Header */}
-        <View className="p-5">
+        <View
+          style={{
+            padding: isTablet
+              ? sizeBlock.getWidthSize(15)
+              : sizeBlock.getWidthSize(20),
+          }}
+        >
           <HeaderComponent />
-          <AppText className="font-outfit-semibold text-3xl">
+          <AppText variant="h2" className="font-outfit-semibold text-3xl">
             Reset Password
           </AppText>
           <AppText variant="body" className="text-secondary mt-1">
@@ -57,7 +66,14 @@ export default function ResetPasswordScreen() {
         </View>
 
         {/* Form */}
-        <View className="gap-5 px-5 py-6">
+        <View
+          style={{
+            padding: isTablet
+              ? sizeBlock.getWidthSize(15)
+              : sizeBlock.getWidthSize(20),
+          }}
+          className="gap-5"
+        >
           {/* Email Input */}
 
           {/* Password Input */}

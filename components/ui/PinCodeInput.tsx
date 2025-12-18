@@ -1,3 +1,4 @@
+import { sizeBlock } from "@/styles/universalStyle";
 import React, { useRef, useState } from "react";
 import { TextInput, View } from "react-native";
 
@@ -87,12 +88,17 @@ const PinCodeInput: React.FC<PinCodeInputProps> = ({
           keyboardType="numeric"
           cursorColor="white"
           className={`
-            w-16 h-16 border text-primary rounded-lg text-center text-3xl font-outfit-semibold font-medium
+             border text-primary rounded-lg text-center font-outfit-semibold font-medium
             ${focusedIndex === index ? "border-primary" : "border-stroke"}
             ${value[index] ? "border-primary" : ""}
             ${disabled ? "bg-gray-200 opacity-50" : "bg-white"}
             `}
           textAlign="center"
+          style={{
+            width: sizeBlock.getWidthSize(44),
+            height: sizeBlock.getWidthSize(44),
+            fontSize: sizeBlock.fontSize(24),
+          }}
         />
       ))}
     </View>
