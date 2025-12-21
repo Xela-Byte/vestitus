@@ -2,6 +2,7 @@ import CartItem from "@/components/cart/CartItem";
 import AppButton from "@/components/ui/AppButton";
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
+import { useDeviceType } from "@/hooks";
 import { sizeBlock } from "@/styles/universalStyle";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
@@ -10,6 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const CartScreen = () => {
   const router = useRouter();
+  const isTablet = useDeviceType() === "tablet";
   return (
     <SafeAreaView className="flex-1 bg-white">
       {/* Header */}
@@ -19,8 +21,10 @@ const CartScreen = () => {
 
       {/* <NoCartItem /> */}
       <FlatList
-        contentContainerClassName="gap-y-4 px-5 pb-24"
+        key={`${isTablet}`}
+        contentContainerClassName="gap-4 flex px-5 pb-24"
         data={[1, 2, 3, 4, 5]}
+        numColumns={isTablet ? 2 : 1}
         renderItem={({ item }) => {
           return <CartItem />;
         }}

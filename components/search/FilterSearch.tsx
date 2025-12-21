@@ -1,5 +1,6 @@
 import FilterIcon from "@/assets/icons/filter.svg";
 import { useSearchStore } from "@/store/search-store";
+import { sizeBlock } from "@/styles/universalStyle";
 import React, { useMemo } from "react";
 import { Modal, Pressable, View } from "react-native";
 import FilterBottomSheet from "./FilterBottomSheet";
@@ -28,7 +29,11 @@ const FilterSearch = ({ onFilterChange }: Props) => {
     <>
       <Pressable
         onPress={handleFilterPress}
-        className="w-14 relative h-14 bg-primary rounded-xl flex items-center justify-center"
+        style={{
+          height: sizeBlock.getHeightSize(36),
+          width: sizeBlock.getHeightSize(36),
+        }}
+        className="relative bg-primary rounded-xl flex items-center justify-center"
       >
         <FilterIcon />
         {hasActiveFilters && (

@@ -151,7 +151,10 @@ const ReviewBottomSheet: React.FC<ReviewBottomSheetProps> = ({
             {/* Star Rating */}
             <View className="mb-6">
               <AppText variant="h4">How was your order?</AppText>
-              <AppText className="text-secondary text-sm font-outfit-medium mb-4">
+              <AppText
+                variant="caption"
+                className="text-secondary text-sm font-outfit-medium mb-4"
+              >
                 Please give your rating and also your review.
               </AppText>
               <View className="flex-row justify-center gap-2">
@@ -163,7 +166,7 @@ const ReviewBottomSheet: React.FC<ReviewBottomSheetProps> = ({
                   >
                     <MaterialCommunityIcons
                       name={"star"}
-                      size={30}
+                      size={sizeBlock.fontSize(30)}
                       color={star <= rating ? "#FFA928" : "#E0E0E0"}
                     />
                   </TouchableOpacity>
@@ -180,11 +183,12 @@ const ReviewBottomSheet: React.FC<ReviewBottomSheetProps> = ({
                 placeholderTextColor="#808080"
                 multiline
                 numberOfLines={10}
-                className="border h-32 rounded-lg px-4 py-3 font-outfit-regular text-primary text-base bg-white"
+                className="border h-32 rounded-lg px-4 py-5 font-outfit-regular text-primary text-base bg-white"
                 style={{
                   textAlignVertical: "top",
                   borderColor: "#E0E0E0",
                   borderWidth: 1,
+                  fontSize: sizeBlock.fontSize(12),
                 }}
               />
             </View>
@@ -192,7 +196,8 @@ const ReviewBottomSheet: React.FC<ReviewBottomSheetProps> = ({
             {/* Submit Button */}
             <AppButton
               label="Submit Review"
-              className="w-full"
+              textVariant="body"
+              className="w-full py-5 my-4"
               onPress={handleSubmit}
               disabled={rating === 0 || !comment.trim()}
             />

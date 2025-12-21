@@ -1,3 +1,4 @@
+import { useDeviceType } from "@/hooks";
 import { Product } from "@/types/product";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { Link } from "expo-router";
@@ -98,9 +99,12 @@ const ProductView = () => {
     return false;
   };
 
+  const isTablet = useDeviceType() === "tablet";
+
   return (
     <View className="w-full">
       <FlatList
+        key={`${isTablet}`}
         style={{
           width: "100%",
           height: "85%",
@@ -108,12 +112,12 @@ const ProductView = () => {
         contentContainerStyle={{
           paddingBottom: bottomTabBarheight + 20,
         }}
-        numColumns={2}
+        numColumns={isTablet ? 3 : 2}
         data={mockClothes}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
           return (
-            <Link href={`/product/${item.id}`} className="w-1/2 pb-16 px-2">
+            <Link href={`/product/${item.id}`} className="flex-1 pb-20 px-2">
               <ProductCard
                 isSaved={getSavedStatus(item.id)}
                 onSaveToggle={() => handleSaveToggle(item.id)}

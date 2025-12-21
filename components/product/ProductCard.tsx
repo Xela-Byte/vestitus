@@ -55,6 +55,7 @@ const ProductCard = ({
 
       <AppText
         weight="semibold"
+        variant="caption"
         className={`mt-3 font-outfit-semibold text-base ${titleClassName ?? ""}`}
         numberOfLines={1}
       >
@@ -63,10 +64,12 @@ const ProductCard = ({
       {showDescription && (
         <AppText
           weight="medium"
+          variant="subtitle"
           className={`text-xs font-outfit-medium text-secondary ${descriptionClassName ?? ""}`}
           numberOfLines={1}
         >
-          ${item.price.toFixed(2)}{" "}
+          ${item.price.toFixed(2)}
+          {"   "}
           <AppText weight="semibold" className="text-red-400">
             -{item.discountPercent}%
           </AppText>

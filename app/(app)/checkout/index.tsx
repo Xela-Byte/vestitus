@@ -30,16 +30,23 @@ const CheckoutScreen = () => {
               <View className="flex flex-row items-start justify-between">
                 <AppText variant="h4">Delivery Address</AppText>
                 <Link asChild href="/address">
-                  <AppText className="underline text-sm font-outfit-medium">
+                  <AppText
+                    variant="caption"
+                    className="underline font-outfit-medium"
+                  >
                     Change
                   </AppText>
                 </Link>
               </View>
 
               <View className="py-3 flex flex-row gap-x-3">
-                <Feather name="map-pin" size={24} color="#808080" />
+                <Feather
+                  name="map-pin"
+                  size={sizeBlock.fontSize(24)}
+                  color="#808080"
+                />
                 <View>
-                  <AppText className="text-sm font-outfit-semibold">
+                  <AppText variant="caption" className="font-outfit-semibold">
                     Home
                   </AppText>
                   <AppText variant="caption" className="text-secondary">
@@ -61,15 +68,21 @@ const CheckoutScreen = () => {
               <AppText variant="h4">Order Summary</AppText>
               <View className="pb-5 gap-y-2">
                 <View className="flex flex-row items-center justify-between">
-                  <AppText className="text-secondary">Sub-total</AppText>
+                  <AppText variant="caption" className="text-secondary">
+                    Sub-total
+                  </AppText>
                   <AppText variant="h4">$1,900</AppText>
                 </View>
                 <View className="flex flex-row items-center justify-between">
-                  <AppText className="text-secondary">VAT (%)</AppText>
+                  <AppText variant="caption" className="text-secondary">
+                    VAT (%)
+                  </AppText>
                   <AppText variant="h4">$0.00</AppText>
                 </View>
                 <View className="flex flex-row items-center justify-between">
-                  <AppText className="text-secondary">Shipping fee</AppText>
+                  <AppText variant="caption" className="text-secondary">
+                    Shipping fee
+                  </AppText>
                   <AppText variant="h4">$80</AppText>
                 </View>
               </View>
@@ -83,10 +96,15 @@ const CheckoutScreen = () => {
 
           <View className="p-7 gap-y-3">
             <View className="flex flex-row gap-x-4">
-              <View className="flex-1 h-14 flex flex-row items-center gap-x-2 border border-stroke rounded-lg p-3">
+              <View
+                style={{
+                  height: sizeBlock.getHeightSize(44),
+                }}
+                className="flex-1 flex flex-row items-center gap-x-2 border border-stroke rounded-lg p-3"
+              >
                 <Feather
                   name="tag"
-                  size={20}
+                  size={sizeBlock.fontSize(20)}
                   color="#808080"
                   style={{
                     marginRight: -sizeBlock.getWidthSize(5),
@@ -96,7 +114,7 @@ const CheckoutScreen = () => {
                   placeholder="Enter promo code"
                   control={control}
                   name="promoCode"
-                  className="h-full  border-0 pr-8 pb-2"
+                  className="h-full border-0 pr-8 mb-2 pb-2"
                 />
               </View>
               <AppButton

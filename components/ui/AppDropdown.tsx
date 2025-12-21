@@ -1,3 +1,4 @@
+import { sizeBlock } from "@/styles/universalStyle";
 import AntDesignIcon from "@expo/vector-icons/AntDesign";
 import React, { useState } from "react";
 import { TouchableOpacity, View } from "react-native";
@@ -27,7 +28,7 @@ const AppDropdown = ({
   return (
     <View className="mb-5">
       {label && (
-        <AppText weight="medium" className="mb-1">
+        <AppText weight="medium" variant="subtitle" className="mb-1">
           {label}
         </AppText>
       )}
@@ -35,7 +36,7 @@ const AppDropdown = ({
       {/* Dropdown Trigger */}
       <TouchableOpacity
         onPress={() => setIsOpen(!isOpen)}
-        className={`${className} w-full rounded-xl px-4 h-14 border flex flex-row items-center justify-between
+        className={`${className} w-full rounded-xl px-4 border flex flex-row items-center justify-between
           bg-white ${
             value
               ? "border-green"
@@ -43,8 +44,14 @@ const AppDropdown = ({
                 ? "border-gray-400"
                 : "border-stroke"
           }`}
+        style={{
+          height: sizeBlock.getHeightSize(36),
+        }}
       >
-        <AppText className={value ? "text-black" : "text-gray-500"}>
+        <AppText
+          variant="caption"
+          className={value ? "text-black" : "text-gray-500"}
+        >
           {value || placeholder}
         </AppText>
         <AntDesignIcon
@@ -69,6 +76,7 @@ const AppDropdown = ({
               }`}
             >
               <AppText
+                variant="caption"
                 className={
                   option === value ? "text-primary font-medium" : "text-black"
                 }
@@ -76,7 +84,11 @@ const AppDropdown = ({
                 {option}
               </AppText>
               {showCheckmark && option === value && (
-                <AntDesignIcon name="check" size={16} color="#1A1A1A" />
+                <AntDesignIcon
+                  name="check"
+                  size={sizeBlock.fontSize(16)}
+                  color="#1A1A1A"
+                />
               )}
             </TouchableOpacity>
           ))}

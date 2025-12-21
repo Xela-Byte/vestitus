@@ -1,7 +1,9 @@
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
 import PopupModal from "@/components/ui/PopupModal";
+import { useDeviceType } from "@/hooks";
 import { useAuthStore } from "@/store";
+import { sizeBlock } from "@/styles/universalStyle";
 import { FontAwesome5 } from "@expo/vector-icons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
@@ -24,6 +26,8 @@ const AccountScreen = () => {
     setLogoutModalVisible(false);
     logout();
   };
+
+  const isTablet = useDeviceType() === "tablet";
   return (
     <View className="bg-stroke">
       <SafeAreaView className="bg-white -mb-10" />
@@ -41,11 +45,19 @@ const AccountScreen = () => {
       >
         <View className="px-5 flex flex-row items-center justify-between bg-white">
           <View className="py-7 flex flex-row items-center gap-x-3">
-            <Feather name="box" size={24} color="black" />
-            <AppText>My Orders</AppText>
+            <Feather
+              name="box"
+              size={sizeBlock.fontSize(isTablet ? 16 : 24)}
+              color="black"
+            />
+            <AppText variant="caption">My Orders</AppText>
           </View>
 
-          <Feather name="chevron-right" size={24} color="#808080" />
+          <Feather
+            name="chevron-right"
+            size={sizeBlock.fontSize(24)}
+            color="#808080"
+          />
         </View>
       </Pressable>
 
@@ -58,38 +70,58 @@ const AccountScreen = () => {
           <View className="px-5 flex flex-row items-center justify-between bg-white">
             <View className="py-5 flex flex-row items-center gap-x-3">
               <FontAwesome name="address-card-o" size={20} color="black" />
-              <AppText>My Details</AppText>
+              <AppText variant="caption">My Details</AppText>
             </View>
-            <Feather name="chevron-right" size={24} color="#808080" />
+            <Feather
+              name="chevron-right"
+              size={sizeBlock.fontSize(24)}
+              color="#808080"
+            />
           </View>
         </Pressable>
 
         <Pressable onPress={() => router.push("/address")}>
           <View className="px-5 flex flex-row items-center justify-between bg-white">
             <View className="py-5 flex flex-row items-center gap-x-3">
-              <Feather name="home" size={24} color="black" />
-              <AppText>Address Book</AppText>
+              <Feather
+                name="home"
+                size={sizeBlock.fontSize(isTablet ? 15 : 20)}
+                color="black"
+              />
+              <AppText variant="caption">Address Book</AppText>
             </View>
 
-            <Feather name="chevron-right" size={24} color="#808080" />
+            <Feather
+              name="chevron-right"
+              size={sizeBlock.fontSize(24)}
+              color="#808080"
+            />
           </View>
         </Pressable>
         <View className="px-5 flex flex-row items-center justify-between bg-white">
           <View className="py-5 flex flex-row items-center gap-x-3">
             <FontAwesome name="credit-card" size={22} color="black" />
-            <AppText>Payment Methods</AppText>
+            <AppText variant="caption">Payment Methods</AppText>
           </View>
 
-          <Feather name="chevron-right" size={24} color="#808080" />
+          <Feather
+            name="chevron-right"
+            size={sizeBlock.fontSize(24)}
+            color="#808080"
+          />
         </View>
         <Pressable onPress={() => router.push("/profile/notifications")}>
           <View className="px-5 flex flex-row items-center justify-between bg-white">
             <View className="py-5 flex flex-row items-center gap-x-3">
               <Feather name="bell" size={22} color="black" />
-              <AppText>Notifications</AppText>
+              <AppText variant="caption">Notifications</AppText>
             </View>
 
-            <Feather name="chevron-right" size={24} color="#808080" />
+            <Feather
+              name="chevron-right"
+              size={sizeBlock.fontSize(24)}
+              color="#808080"
+            />
           </View>
         </Pressable>
       </View>
@@ -100,9 +132,13 @@ const AccountScreen = () => {
             <View className="px-5 flex flex-row items-center justify-between bg-white">
               <View className="py-5 flex flex-row items-center gap-x-3">
                 <AntDesign name="question-circle" size={20} color="black" />
-                <AppText>FAQs</AppText>
+                <AppText variant="caption">FAQs</AppText>
               </View>
-              <Feather name="chevron-right" size={24} color="#808080" />
+              <Feather
+                name="chevron-right"
+                size={sizeBlock.fontSize(24)}
+                color="#808080"
+              />
             </View>
           </Pressable>
         </Link>
@@ -111,10 +147,14 @@ const AccountScreen = () => {
             <View className="px-5 flex flex-row items-center justify-between bg-white">
               <View className="py-5 flex flex-row items-center gap-x-3">
                 <FontAwesome5 name="headset" size={20} color="black" />
-                <AppText>Customer Support</AppText>
+                <AppText variant="caption">Customer Support</AppText>
               </View>
 
-              <Feather name="chevron-right" size={24} color="#808080" />
+              <Feather
+                name="chevron-right"
+                size={sizeBlock.fontSize(24)}
+                color="#808080"
+              />
             </View>
           </Pressable>
         </Link>
@@ -125,10 +165,16 @@ const AccountScreen = () => {
           <View className="px-5 flex flex-row items-center justify-between bg-white">
             <View className="py-5 flex flex-row items-center gap-x-3">
               <Feather name="log-out" size={22} color="red" />
-              <AppText className="text-red-500">Logout</AppText>
+              <AppText className="text-red-500" variant="caption">
+                Logout
+              </AppText>
             </View>
 
-            <Feather name="chevron-right" size={24} color="#808080" />
+            <Feather
+              name="chevron-right"
+              size={sizeBlock.fontSize(24)}
+              color="#808080"
+            />
           </View>
         </Pressable>
       </View>

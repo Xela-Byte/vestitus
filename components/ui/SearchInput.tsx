@@ -50,9 +50,10 @@ const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
       <View
         className={`${containerClassName} w-full rounded-xl px-4 border flex flex-row items-center bg-input ${
           isFocused ? focusedBorderColor : borderColor
-        } h-14`}
+        }`}
         style={{
           paddingHorizontal: sizeBlock.getWidthSize(4),
+          height: sizeBlock.getHeightSize(36),
         }}
       >
         {/* Search Icon */}

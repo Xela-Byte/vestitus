@@ -31,7 +31,7 @@ const OrderCard = ({ order, onReviewSubmit }: Props) => {
       <View className="bg-white rounded-lg px-4 py-4 mb-3 border border-stroke">
         {/* Header */}
         <View className="flex flex-row items-center justify-between mb-3">
-          <AppText className="font-outfit-semibold text-base">
+          <AppText variant="caption" className="font-outfit-semibold">
             Order #{order.orderNumber}
           </AppText>
           <View
@@ -39,7 +39,8 @@ const OrderCard = ({ order, onReviewSubmit }: Props) => {
             style={{ backgroundColor: getStatusColor(order.status) + "20" }}
           >
             <AppText
-              className="font-outfit-medium text-xs"
+              variant="subtitle"
+              className="font-outfit-medium"
               style={{ color: getStatusColor(order.status) }}
             >
               {getStatusLabel(order.status)}
@@ -58,14 +59,15 @@ const OrderCard = ({ order, onReviewSubmit }: Props) => {
             }}
           />
           <View className="flex-1">
-            <AppText className="font-outfit-medium text-sm" numberOfLines={1}>
+            <AppText
+              variant="caption"
+              className="font-outfit-medium"
+              numberOfLines={1}
+            >
               {firstItem.productName}
             </AppText>
             {itemCount > 1 && (
-              <AppText
-                variant="caption"
-                className="text-xs text-secondary mt-1"
-              >
+              <AppText variant="subtitle" className=" text-secondary mt-1">
                 +{itemCount - 1} more item{itemCount > 2 ? "s" : ""}
               </AppText>
             )}
@@ -81,7 +83,7 @@ const OrderCard = ({ order, onReviewSubmit }: Props) => {
             <AppText variant="caption" className="text-secondary mb-1">
               Total Amount
             </AppText>
-            <AppText className="font-outfit-semibold text-base">
+            <AppText variant="caption" className="font-outfit-semibold">
               ${order.totalAmount.toFixed(2)}
             </AppText>
           </View>
@@ -90,7 +92,7 @@ const OrderCard = ({ order, onReviewSubmit }: Props) => {
             <Link asChild href={`/orders/track-order/${order.id}`}>
               <AppButton
                 label="Track Order"
-                textClassName="text-xs"
+                textVariant="caption"
                 size="sm"
                 className="px-5"
               />
@@ -102,6 +104,7 @@ const OrderCard = ({ order, onReviewSubmit }: Props) => {
               {order.review ? (
                 <AppButton
                   variant="outline"
+                  textVariant="caption"
                   label={`★ ${order.review.rating}/5`}
                   icon={
                     <MaterialCommunityIcons
@@ -118,6 +121,7 @@ const OrderCard = ({ order, onReviewSubmit }: Props) => {
               ) : (
                 <AppButton
                   label="Leave a Review"
+                  textVariant="caption"
                   textClassName="text-xs"
                   size="sm"
                   className="px-5"

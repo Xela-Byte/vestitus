@@ -32,7 +32,8 @@ const ProductCategoryTab = ({ onCategorySelect, selectedCategory }: Props) => {
         }`}
       >
         <AppText
-          className={`text-sm font-outfit-regular ${category === selectedCategory ? "text-white" : "text-gray-800"}`}
+          variant="caption"
+          className={`font-outfit-regular ${category === selectedCategory ? "text-white" : "text-gray-800"}`}
         >
           {category}
         </AppText>

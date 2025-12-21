@@ -8,7 +8,7 @@ import AppText from "../ui/AppText";
 
 const CartItem = () => {
   return (
-    <View className="bg-[#efecec] rounded-xl px-3 py-5 flex flex-row items-start justify-between">
+    <View className="bg-[#efecec] rounded-xl px-3 py-5 flex flex-row items-start justify-between flex-1 mx-2">
       <Image
         source={Shirt}
         style={{

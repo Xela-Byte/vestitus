@@ -157,7 +157,12 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
                 onPress={onClose}
                 className="absolute top-4 right-4 z-10 p-2"
               >
-                <AppText className="text-lg font-bold text-gray-400">✕</AppText>
+                <AppText
+                  variant="body"
+                  className="text-lg font-bold text-gray-400"
+                >
+                  ✕
+                </AppText>
               </TouchableOpacity>
             )}
 
@@ -212,7 +217,8 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
                       loading={secondaryAction.loading}
                       disabled={secondaryAction.disabled}
                       variant="outline"
-                      className="flex-1"
+                      textVariant="caption"
+                      className="flex-1 py-5"
                     />
                   )}
                   {primaryAction && (
@@ -224,7 +230,8 @@ const PopupModal = React.forwardRef<View, PopupModalProps>(
                       variant={
                         variant === "destructive" ? "secondary" : "primary"
                       }
-                      className="flex-1"
+                      textVariant="caption"
+                      className="flex-1 py-5"
                     />
                   )}
                 </View>

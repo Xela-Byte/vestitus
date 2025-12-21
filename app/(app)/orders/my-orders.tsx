@@ -141,7 +141,7 @@ const MyOrdersScreen = () => {
           contentContainerStyle={{ gap: 8 }}
           renderItem={({ item }) => (
             <View
-              className={`px-4 py-2 rounded-full border ${
+              className={`px-4 py-2 mr-2 rounded-full border ${
                 selectedFilter === item.id
                   ? "bg-black border-black"
                   : "bg-transparent border-stroke"
@@ -149,7 +149,8 @@ const MyOrdersScreen = () => {
               onTouchEnd={() => setSelectedFilter(item.id)}
             >
               <AppText
-                className={`font-outfit-medium text-sm ${
+                variant="caption"
+                className={`font-outfit-medium ${
                   selectedFilter === item.id ? "text-white" : "text-secondary"
                 }`}
               >

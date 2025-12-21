@@ -48,6 +48,9 @@ export default function TabLayout() {
             paddingTop: sizeBlock.getHeightSize(20),
           },
         }),
+        tabBarLabelStyle: {
+          fontSize: sizeBlock.fontSize(12),
+        },
       }}
     >
       <Tabs.Screen

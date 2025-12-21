@@ -1,6 +1,7 @@
 import AppButton from "@/components/ui/AppButton";
 import AppText from "@/components/ui/AppText";
 import HeaderComponent from "@/components/ui/HeaderComponent";
+import { sizeBlock } from "@/styles/universalStyle";
 import { Feather } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import React, { useCallback, useState } from "react";
@@ -193,21 +194,32 @@ const DraggableAddressItem = ({
         >
           {/* Drag Handle */}
           <View className="justify-center items-center w-5">
-            <Feather name="menu" size={24} color="#808080" />
+            <Feather
+              name="menu"
+              size={sizeBlock.fontSize(24)}
+              color="#808080"
+            />
           </View>
 
           {/* Location Icon */}
-          <Feather name="map-pin" size={24} color="#808080" />
+          <Feather
+            name="map-pin"
+            size={sizeBlock.fontSize(24)}
+            color="#808080"
+          />
 
           {/* Address Content */}
           <View className="flex-1">
-            <View className="flex flex-row items-center gap-x-2">
-              <AppText className="text-sm font-outfit-semibold">
+            <View className="flex flex-row items-center gap-x-4">
+              <AppText variant="caption" className="font-outfit-semibold">
                 {item.label}
               </AppText>
               {index === 0 && (
                 <View className="bg-primary px-2 py-1 rounded">
-                  <AppText className="text-xs font-outfit-semibold text-white">
+                  <AppText
+                    variant="subtitle"
+                    className="font-outfit-semibold text-white"
+                  >
                     Default
                   </AppText>
                 </View>

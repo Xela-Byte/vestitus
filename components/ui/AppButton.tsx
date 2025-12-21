@@ -71,6 +71,15 @@ export interface AppButtonProps extends TouchableOpacityProps {
    */
   fullWidth?: boolean;
   textClassName?: string;
+  textVariant?:
+    | "button"
+    | "body"
+    | "caption"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "subtitle";
 }
 
 /**
@@ -121,6 +130,7 @@ const AppButton = React.forwardRef<any, AppButtonProps>(
       fullWidth = false,
       children,
       textClassName,
+      textVariant = "button",
       ...props
     },
     ref
@@ -190,7 +200,7 @@ const AppButton = React.forwardRef<any, AppButtonProps>(
 
           {(label || children) && (
             <AppText
-              variant={"button"}
+              variant={textVariant}
               className={`font-outfit-semibold text-center ${getTextColor()} ${textClassName || ""} `}
             >
               {label || children}

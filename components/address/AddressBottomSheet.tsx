@@ -185,7 +185,10 @@ const AddressBottomSheet: React.FC<AddressBottomSheetProps> = ({
 
             {/* Address Input */}
             <View className="mb-6">
-              <AppText className="text-secondary text-sm font-outfit-medium mb-2">
+              <AppText
+                variant="caption"
+                className="text-secondary font-outfit-medium mb-2"
+              >
                 Full Address
               </AppText>
               <TextInput
@@ -195,8 +198,12 @@ const AddressBottomSheet: React.FC<AddressBottomSheetProps> = ({
                 placeholderTextColor="#808080"
                 multiline
                 numberOfLines={4}
-                className="border border-gray-300 rounded-lg px-4 py-3 font-outfit-regular text-primary text-base bg-white"
-                style={{ textAlignVertical: "top" }}
+                className="border border-gray-300 rounded-lg px-4 py-4 font-outfit-regular text-primary text-base bg-white"
+                style={{
+                  textAlignVertical: "top",
+                  // height: sizeBlock.getHeightSize(36),
+                  fontSize: sizeBlock.fontSize(12),
+                }}
               />
             </View>
 
@@ -213,10 +220,17 @@ const AddressBottomSheet: React.FC<AddressBottomSheetProps> = ({
                 }`}
               >
                 {isDefaultAddress && (
-                  <AntDesign name="check" size={12} color="white" />
+                  <AntDesign
+                    name="check"
+                    size={sizeBlock.fontSize(12)}
+                    color="white"
+                  />
                 )}
               </View>
-              <AppText className="text-primary font-outfit-regular">
+              <AppText
+                variant="caption"
+                className="text-primary font-outfit-regular"
+              >
                 Make this as a default address
               </AppText>
             </TouchableOpacity>
